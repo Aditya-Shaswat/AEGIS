@@ -5,39 +5,49 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <title>AEGIS — Civilization Intelligence System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;600;700;900&display=swap">
 <style>
 /* ═══════════════════════════════════════════════
    AEGIS v3 — Red Phosphor Theme
    Clean rebuild for browser + Colab compatibility
    ═══════════════════════════════════════════════ */
 :root {
-  --bg0:  #010002;
-  --bg1:  #050008;
-  --bg2:  #08000d;
-  --bg3:  #0d0015;
-  --br1:  #1a0018;
-  --br2:  #280020;
-  --br3:  #380030;
-  --br4:  #500044;
-  --t0:   #ff7070;
-  --t1:   #cc3350;
-  --t2:   #7a2035;
-  --t3:   #3d0f1a;
-  --t4:   #1e080d;
-  --ok:   #39ff14;
-  --warn: #ffd600;
-  --err:  #ff1744;
-  --info: #40c4ff;
-  --mono: "IBM Plex Mono", monospace;
-  --cond: "IBM Plex Sans Condensed", sans-serif;
-  --body: "IBM Plex Sans", sans-serif;
-  --top:  46px;
-  --side: 220px;
-  --info-w: 256px;
+  /* Deep space — not pitch black, has character */
+  --bg0:  #0a0a0f;
+  --bg1:  #0f0f18;
+  --bg2:  #141420;
+  --bg3:  #1a1a28;
+  --br1:  #1e1e30;
+  --br2:  #2a2a45;
+  --br3:  #363658;
+  --br4:  #484870;
+
+  /* Crimson-to-coral — bright and highly readable */
+  --t0:   #ff6b6b;   /* primary — bright coral red */
+  --t1:   #e8e8f0;   /* body text — near white, readable */
+  --t2:   #a0a0c0;   /* secondary text — soft lavender-grey */
+  --t3:   #606080;   /* muted text */
+  --t4:   #303050;   /* very dim */
+  --acc:  #ff4757;   /* accent — pure crimson */
+  --glow: #ff6b6b;
+
+  --ok:   #2ed573;
+  --warn: #ffa502;
+  --err:  #ff4757;
+  --info: #1e90ff;
+
+  /* Upgraded readable fonts */
+  --mono: "Share Tech Mono", monospace;
+  --cond: "Rajdhani", sans-serif;
+  --body: "Inter", sans-serif;
+  --head: "Orbitron", sans-serif;
+
+  --top:  52px;
+  --side: 230px;
+  --info-w: 260px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg0);color:var(--t1);font-family:var(--body);font-size:13px;line-height:1.5}
+html,body{height:100%;overflow:hidden;background:var(--bg0);color:var(--t1);font-family:var(--body);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-track{background:var(--bg1)}
 ::-webkit-scrollbar-thumb{background:var(--br3)}
@@ -60,8 +70,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 .tb-logo{display:flex;align-items:center;gap:10px;padding:0 16px;width:var(--side);border-right:1px solid var(--br2);flex-shrink:0}
 .logo-glyph{font-size:22px;color:var(--t0);animation:glow 4s ease-in-out infinite}
 @keyframes glow{0%,100%{text-shadow:0 0 8px rgba(255,112,112,.4)}50%{text-shadow:0 0 22px rgba(255,112,112,.9),0 0 50px rgba(255,30,60,.2)}}
-.logo-name{font-family:var(--cond);font-weight:700;font-size:16px;letter-spacing:.08em;color:var(--t0)}
-.logo-sub{font-family:var(--mono);font-size:6.5px;letter-spacing:.22em;color:var(--t3);text-transform:uppercase}
+.logo-name{font-family:var(--head);font-weight:700;font-size:15px;letter-spacing:.12em;color:var(--t0);text-shadow:0 0 14px rgba(255,107,107,.5)}
+.logo-sub{font-family:var(--mono);font-size:6px;letter-spacing:.2em;color:var(--t3);text-transform:uppercase;margin-top:1px}
+.logo-creator{font-family:var(--body);font-size:8px;color:var(--acc);letter-spacing:.12em;opacity:.75;margin-top:1px;font-style:italic}
 
 .tb-nav{display:flex;align-items:stretch;flex:1}
 .nb{display:flex;align-items:center;gap:7px;padding:0 16px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);border-right:1px solid var(--br1);cursor:pointer;transition:color .12s,background .12s;white-space:nowrap;position:relative}
@@ -475,6 +486,616 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
   .nb .n-label{ display:none; }
   .nb .n-icon{ font-size:14px; }
 }
+
+/* ══════════════════════════════════════════════
+   ABOUT / MISSION VIEW
+   ══════════════════════════════════════════════ */
+#v-about {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg0);
+}
+
+.about-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 0 80px;
+}
+
+/* Hero */
+.about-hero {
+  text-align: center;
+  padding: 70px 24px 60px;
+  background: linear-gradient(180deg, rgba(255,107,107,.06) 0%, transparent 100%);
+  border-bottom: 1px solid var(--br2);
+  position: relative;
+  overflow: hidden;
+}
+.about-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,71,87,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.about-sigil {
+  font-size: 56px;
+  color: var(--acc);
+  display: block;
+  margin-bottom: 18px;
+  animation: glow 4s ease-in-out infinite;
+  position: relative;
+}
+.about-hero-title {
+  font-family: var(--head);
+  font-size: 64px;
+  font-weight: 900;
+  letter-spacing: .18em;
+  color: var(--t0);
+  text-shadow: 0 0 40px rgba(255,107,107,.4), 0 0 80px rgba(255,71,87,.15);
+  line-height: 1;
+  margin-bottom: 14px;
+  position: relative;
+}
+.about-hero-sub {
+  font-family: var(--cond);
+  font-size: 13px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--t2);
+  margin-bottom: 20px;
+  position: relative;
+}
+.about-tagline {
+  font-family: var(--body);
+  font-size: 22px;
+  font-weight: 300;
+  color: var(--t1);
+  letter-spacing: .04em;
+  font-style: italic;
+  position: relative;
+}
+
+/* Sections */
+.about-section {
+  padding: 50px 32px;
+  border-bottom: 1px solid var(--br1);
+}
+.about-sec-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--acc);
+  margin-bottom: 14px;
+}
+.about-sec-title {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--t0);
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+.about-sec-body {
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--t1);
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+/* Belief cards */
+.about-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 10px;
+}
+.about-card {
+  background: var(--bg1);
+  border: 1px solid var(--br2);
+  padding: 22px 20px;
+  transition: border-color .2s, background .2s;
+}
+.about-card:hover {
+  border-color: var(--br4);
+  background: var(--bg2);
+}
+.about-card-icon {
+  font-size: 22px;
+  color: var(--acc);
+  margin-bottom: 10px;
+  display: block;
+}
+.about-card-title {
+  font-family: var(--cond);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--t0);
+  margin-bottom: 8px;
+}
+.about-card-body {
+  font-size: 13px;
+  color: var(--t2);
+  line-height: 1.75;
+}
+
+/* Domains grid */
+.about-domains-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+.about-domain {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px;
+  background: var(--bg1);
+  border: 1px solid;
+  transition: background .2s;
+}
+.about-domain:hover { background: var(--bg2); }
+.about-domain-icon { font-size: 20px; }
+.about-domain-name {
+  font-family: var(--cond);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--t1);
+  letter-spacing: .04em;
+}
+.about-domain-count {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--t3);
+  letter-spacing: .1em;
+}
+
+/* Creator card */
+.about-creator-card {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  background: var(--bg1);
+  border: 1px solid var(--br2);
+  border-left: 3px solid var(--acc);
+  padding: 28px 24px;
+  margin-top: 10px;
+}
+.about-creator-glyph {
+  font-size: 36px;
+  color: var(--acc);
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 4px;
+}
+.about-creator-name {
+  font-family: var(--head);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--t0);
+  margin-bottom: 4px;
+}
+.about-creator-role {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--acc);
+  margin-bottom: 14px;
+}
+.about-creator-bio {
+  font-size: 14px;
+  color: var(--t1);
+  line-height: 1.8;
+}
+
+/* Action buttons */
+.about-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 13px 22px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .18s;
+  cursor: pointer;
+}
+.about-btn.primary {
+  background: rgba(255,71,87,.12);
+  border: 1px solid rgba(255,71,87,.5);
+  color: var(--t0);
+}
+.about-btn.primary:hover {
+  background: rgba(255,71,87,.22);
+  border-color: var(--acc);
+  box-shadow: 0 0 16px rgba(255,71,87,.2);
+}
+.about-btn.secondary {
+  background: var(--bg2);
+  border: 1px solid var(--br3);
+  color: var(--t1);
+}
+.about-btn.secondary:hover {
+  background: var(--bg3);
+  border-color: var(--br4);
+}
+.about-btn.ghost {
+  background: transparent;
+  border: 1px solid var(--br2);
+  color: var(--t2);
+}
+.about-btn.ghost:hover {
+  border-color: var(--br3);
+  color: var(--t1);
+}
+
+/* Footer */
+.about-footer {
+  text-align: center;
+  padding: 60px 32px 40px;
+  border-top: 1px solid var(--br2);
+}
+.about-footer-sigil {
+  font-size: 30px;
+  color: var(--acc);
+  margin-bottom: 14px;
+  opacity: .6;
+}
+.about-footer-text {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t2);
+  line-height: 2;
+  margin-bottom: 24px;
+}
+.about-footer-quote {
+  font-family: var(--body);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--t3);
+  line-height: 1.9;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* Mobile about */
+@media(max-width:768px) {
+  .about-hero-title { font-size: 42px; }
+  .about-tagline { font-size: 17px; }
+  .about-section { padding: 36px 18px; }
+  .about-cards { grid-template-columns: 1fr; }
+  .about-domains-grid { grid-template-columns: 1fr 1fr; }
+  .about-creator-card { flex-direction: column; gap: 14px; }
+  .about-actions { flex-direction: column; }
+  .about-btn { justify-content: center; }
+}
+@media(max-width:480px) {
+  .about-domains-grid { grid-template-columns: 1fr; }
+}
+
+
+
+/* ══════════════════════════════════════════════
+   UI REDESIGN — softer, less blocky
+   ══════════════════════════════════════════════ */
+
+/* ── GLOBAL RADIUS & SOFTNESS ── */
+* { box-sizing: border-box; }
+
+/* Softer scrollbars */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--br3); border-radius: 99px; }
+
+/* ── TOPBAR — pill nav instead of sharp blocks ── */
+.tb-logo {
+  border-right: none !important;
+  padding: 0 20px !important;
+}
+.nb {
+  border-right: none !important;
+  border-radius: 6px;
+  margin: 6px 2px;
+  padding: 0 14px !important;
+  font-size: 9px !important;
+  letter-spacing: .12em !important;
+  font-family: var(--cond) !important;
+  font-weight: 600 !important;
+}
+.nb.on {
+  background: rgba(255,107,107,.12) !important;
+  color: var(--t0) !important;
+}
+.nb.on::after { display: none !important; }
+.nb:hover {
+  background: rgba(255,107,107,.07) !important;
+  color: var(--t1) !important;
+}
+#topbar {
+  border-bottom: 1px solid var(--br1) !important;
+  background: rgba(15,15,24,.95) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ── SIDEBAR — softer rows ── */
+.dom-hdr {
+  border-radius: 6px;
+  margin: 2px 6px;
+}
+.dom-art {
+  border-radius: 4px;
+  margin: 1px 8px;
+}
+
+/* ── MESSAGES — card style not flat lines ── */
+.msg {
+  border-bottom: none !important;
+  background: var(--bg1);
+  border-radius: 10px;
+  padding: 14px 16px !important;
+  margin-bottom: 10px;
+  border: 1px solid var(--br1);
+  transition: border-color .15s;
+}
+.msg:hover { border-color: var(--br2); }
+.msg:last-child { border-bottom: none !important; }
+#msgs { gap: 10px !important; padding: 18px 18px 8px !important; }
+
+/* ── CHAT INPUT — rounded, floating ── */
+#input-wrap {
+  padding: 12px 16px 16px !important;
+  background: var(--bg0) !important;
+  border-top: 1px solid var(--br1) !important;
+}
+.input-box {
+  border-radius: 10px !important;
+  background: var(--bg1) !important;
+  border: 1px solid var(--br2) !important;
+  overflow: hidden;
+  transition: border-color .18s, box-shadow .18s;
+}
+.input-box:focus-within {
+  border-color: rgba(255,107,107,.5) !important;
+  box-shadow: 0 0 0 3px rgba(255,107,107,.06) !important;
+}
+#qin {
+  padding: 12px 14px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+#sendbtn {
+  border-radius: 0 10px 10px 0 !important;
+  background: rgba(255,71,87,.15) !important;
+  width: 48px !important;
+  font-size: 22px !important;
+  color: var(--t0) !important;
+  transition: background .15s !important;
+}
+#sendbtn:hover { background: rgba(255,71,87,.28) !important; }
+
+/* Domain indicator chip */
+.chip-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .15em;
+  color: var(--t3);
+  text-transform: uppercase;
+}
+.chip-domain-indicator {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--t3);
+  text-transform: uppercase;
+  margin-left: auto;
+  padding: 3px 10px;
+  border: 1px solid var(--br2);
+  border-radius: 99px;
+  cursor: pointer;
+}
+.chip-domain-indicator:hover { border-color: var(--br3); color: var(--t1); }
+.chip.em {
+  border-radius: 99px !important;
+  padding: 3px 10px !important;
+}
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 0 2px;
+}
+
+/* ── EMERGENCY CARDS — rounder, richer ── */
+.emcard {
+  border-radius: 10px !important;
+  padding: 16px !important;
+  border: 1px solid var(--br2) !important;
+  transition: transform .15s, border-color .15s, box-shadow .15s !important;
+}
+.emcard:hover {
+  transform: translateY(-2px) !important;
+  border-color: rgba(255,71,87,.4) !important;
+  box-shadow: 0 4px 20px rgba(255,71,87,.08) !important;
+}
+
+/* ── BROWSE ── */
+.blist { border-right: 1px solid var(--br1) !important; }
+.bcat {
+  border-radius: 6px;
+  margin: 2px 6px;
+}
+.bitem {
+  border-radius: 5px;
+  margin: 1px 8px;
+}
+
+/* ── SYSTEM CARDS — rounder ── */
+.scard {
+  border-radius: 8px !important;
+  border: 1px solid var(--br2) !important;
+  overflow: hidden;
+}
+
+/* ── MODAL — rounder ── */
+.modal {
+  border-radius: 12px !important;
+  border: 1px solid rgba(255,71,87,.2) !important;
+  overflow: hidden;
+}
+.modal-hdr { border-radius: 0 !important; }
+
+/* ── API PANEL — rounder ── */
+.ap-box {
+  border-radius: 14px !important;
+  border: 1px solid var(--br3) !important;
+  overflow: hidden;
+}
+.ap-input {
+  border-radius: 8px !important;
+}
+.ap-btn {
+  border-radius: 8px !important;
+}
+
+/* ── ABOUT CARDS — rounder ── */
+.about-card { border-radius: 10px !important; }
+.about-creator-card { border-radius: 10px !important; }
+.about-btn { border-radius: 8px !important; }
+
+/* ══════════════════════════════════════════════
+   DOMAINS VIEW CSS
+   ══════════════════════════════════════════════ */
+#v-domains { overflow-y: auto; background: var(--bg0); }
+
+.dv-wrap { max-width: 900px; margin: 0 auto; padding: 32px 28px 60px; }
+
+.dv-header { margin-bottom: 28px; }
+.dv-title {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--t0);
+  margin-bottom: 8px;
+}
+.dv-sub {
+  font-size: 14px;
+  color: var(--t2);
+  line-height: 1.7;
+}
+
+.dv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.dv-card {
+  background: var(--bg1);
+  border: 1px solid var(--br2);
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all .18s;
+  position: relative;
+  overflow: hidden;
+}
+.dv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--dc, var(--acc));
+  opacity: 0;
+  transition: opacity .18s;
+}
+.dv-card:hover {
+  border-color: var(--br4);
+  background: var(--bg2);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,.3);
+}
+.dv-card:hover::before { opacity: 1; }
+.dv-card.dv-active {
+  border-color: var(--dc, var(--acc));
+  background: var(--bg2);
+  box-shadow: 0 0 0 1px var(--dc, var(--acc)), 0 4px 20px rgba(0,0,0,.2);
+}
+.dv-card.dv-active::before { opacity: 1; }
+
+.dv-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.dv-icon { font-size: 24px; color: var(--t0); }
+.dv-chip {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid transparent;
+  color: transparent;
+}
+.dv-chip.active-chip {
+  color: var(--dc, var(--acc));
+  border-color: var(--dc, var(--acc));
+  background: rgba(255,71,87,.08);
+}
+.dv-name {
+  font-family: var(--cond);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--t1);
+  margin-bottom: 8px;
+}
+.dv-desc {
+  font-size: 12.5px;
+  color: var(--t2);
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+.dv-arts {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--t3);
+}
+
+/* Mobile domains */
+@media(max-width:768px) {
+  .dv-wrap { padding: 20px 16px 40px; }
+  .dv-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .dv-card { padding: 14px; }
+}
+@media(max-width:420px) {
+  .dv-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 
 <body>
@@ -494,13 +1115,19 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 <header id="topbar">
   <div class="tb-logo">
     <span class="logo-glyph">◈</span>
-    <div><div class="logo-name">AEGIS</div><div class="logo-sub">Civilization Intel</div></div>
+    <div>
+      <div class="logo-name">AEGIS</div>
+      <div class="logo-sub">Civilization Intel</div>
+      <div class="logo-creator">by Aditya Shaswat</div>
+    </div>
   </div>
   <nav class="tb-nav">
     <div class="nb on" data-v="chat"      onclick="nav('chat')">◇ Chat</div>
     <div class="nb"    data-v="browse"    onclick="nav('browse')">☰ Knowledge</div>
+    <div class="nb"    data-v="domains"   onclick="nav('domains')">⬡ Domains</div>
     <div class="nb"    data-v="emergency" onclick="nav('emergency')">⚠ Emergency</div>
     <div class="nb"    data-v="system"    onclick="nav('system')">◎ System</div>
+    <div class="nb"    data-v="about"     onclick="nav('about')">✦ Mission</div>
   </nav>
   <div class="tb-right">
     <div class="tb-dot-row">
@@ -543,16 +1170,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
         <button id="sendbtn" onclick="send()">›</button>
       </div>
       <div class="chips">
-        <span style="color:var(--t3)">Domain:</span>
-        <span class="chip on"  id="chip-all"          onclick="setDomain('all')">All</span>
-        <span class="chip"     id="chip-survival"     onclick="setDomain('survival')"     style="color:#ff7070">Survival</span>
-        <span class="chip"     id="chip-medical"      onclick="setDomain('medical')"      style="color:#ff0033">Medical</span>
-        <span class="chip"     id="chip-water"        onclick="setDomain('water')"        style="color:#4488ff">Water</span>
-        <span class="chip"     id="chip-agriculture"  onclick="setDomain('agriculture')"  style="color:#00cc55">Food</span>
-        <span class="chip"     id="chip-engineering"  onclick="setDomain('engineering')"  style="color:#3399ff">Engineering</span>
-        <span class="chip"     id="chip-civilization" onclick="setDomain('civilization')" style="color:#cc44ff">Civilization</span>
-        <span style="color:var(--t3);margin-left:6px">Mode:</span>
+        <span class="chip-label">Mode:</span>
         <span class="chip em" id="chip-em" onclick="toggleEM()">⚠ Emergency</span>
+        <span class="chip-domain-indicator">Domain: <span id="active-domain-label" style="color:var(--t0)">All</span></span>
       </div>
     </div>
   </div>
@@ -626,6 +1246,235 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
           <button onclick="clearKey()" style="padding:7px 14px;border:1px solid var(--br2);color:var(--t3);background:none;font-family:var(--mono);font-size:8px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Clear</button>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <!-- DOMAINS VIEW -->
+  <div id="v-domains" class="view">
+    <div class="dv-wrap">
+      <div class="dv-header">
+        <div class="dv-title">Knowledge Domains</div>
+        <div class="dv-sub">Filter AI responses and browse articles by domain. Select a domain to focus AEGIS on that field of knowledge.</div>
+      </div>
+      <div class="dv-grid">
+
+        <div class="dv-card" onclick="pickDomain('all')" id="dvc-all" data-active="true">
+          <div class="dv-card-top">
+            <span class="dv-icon">◈</span>
+            <span class="dv-chip active-chip" id="dvbadge-all">Active</span>
+          </div>
+          <div class="dv-name">All Domains</div>
+          <div class="dv-desc">No filter — AEGIS draws from the full knowledge base across all 6 domains and 53 articles.</div>
+          <div class="dv-arts">53 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('survival')" id="dvc-survival" style="--dc:#ff4b4b">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#ff4b4b">◈</span>
+            <span class="dv-chip" id="dvbadge-survival"></span>
+          </div>
+          <div class="dv-name">Core Survival</div>
+          <div class="dv-desc">Fire, shelter, navigation, wild food, water discovery, survival psychology and the rule of three.</div>
+          <div class="dv-arts">14 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('medical')" id="dvc-medical" style="--dc:#ff1e3c">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#ff1e3c">✚</span>
+            <span class="dv-chip" id="dvbadge-medical"></span>
+          </div>
+          <div class="dv-name">Emergency Medical</div>
+          <div class="dv-desc">Trauma, hemorrhage control, field surgery, infection, disease, nutrition, childbirth and diagnostics.</div>
+          <div class="dv-arts">10 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('water')" id="dvc-water" style="--dc:#1e90ff">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#1e90ff">◉</span>
+            <span class="dv-chip" id="dvbadge-water"></span>
+          </div>
+          <div class="dv-name">Water Systems</div>
+          <div class="dv-desc">Finding water, purification methods, wells, pumps, gravity systems, sanitation and waste management.</div>
+          <div class="dv-arts">5 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('agriculture')" id="dvc-agriculture" style="--dc:#2ed573">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#2ed573">◐</span>
+            <span class="dv-chip" id="dvbadge-agriculture"></span>
+          </div>
+          <div class="dv-name">Food Production</div>
+          <div class="dv-desc">Soil science, staple crops, seed saving, rotation, permaculture, food forests and aquaculture.</div>
+          <div class="dv-arts">6 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('engineering')" id="dvc-engineering" style="--dc:#3399ff">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#3399ff">◧</span>
+            <span class="dv-chip" id="dvbadge-engineering"></span>
+          </div>
+          <div class="dv-name">Engineering & Construction</div>
+          <div class="dv-desc">Construction, energy generation, metallurgy, materials, communication systems and transportation.</div>
+          <div class="dv-arts">11 articles</div>
+        </div>
+
+        <div class="dv-card" onclick="pickDomain('civilization')" id="dvc-civilization" style="--dc:#b464ff">
+          <div class="dv-card-top">
+            <span class="dv-icon" style="color:#b464ff">◑</span>
+            <span class="dv-chip" id="dvbadge-civilization"></span>
+          </div>
+          <div class="dv-name">Civilization Recovery</div>
+          <div class="dv-desc">Governance, education, literacy, mathematics, physics, chemistry, biology and transportation.</div>
+          <div class="dv-arts">7 articles</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT / MISSION -->
+  <div id="v-about" class="view">
+    <div class="about-wrap">
+
+      <!-- Hero -->
+      <div class="about-hero">
+        <div class="about-sigil">◈</div>
+        <div class="about-hero-title">AEGIS</div>
+        <div class="about-hero-sub">Adaptive Emergency Guide &amp; Intelligence System</div>
+        <div class="about-tagline">The Hope for Humanity</div>
+      </div>
+
+      <!-- Mission Statement -->
+      <div class="about-section">
+        <div class="about-sec-label">◈ Our Mission</div>
+        <div class="about-sec-title">Preserving Human Knowledge When It Matters Most</div>
+        <div class="about-sec-body">
+          AEGIS exists for the worst day in human history — and every difficult day before it.
+          A complete civilization intelligence system, designed to function when the internet is gone,
+          power grids have failed, and institutions have collapsed. Every piece of knowledge a human
+          needs to survive, rebuild, and thrive — from stopping a wound from bleeding to rebuilding
+          a society from first principles — embedded in a single file that works offline, forever.
+        </div>
+      </div>
+
+      <!-- Core Beliefs -->
+      <div class="about-section">
+        <div class="about-sec-label">◈ What We Believe</div>
+        <div class="about-cards">
+          <div class="about-card">
+            <div class="about-card-icon">◉</div>
+            <div class="about-card-title">Knowledge is Survival</div>
+            <div class="about-card-body">The difference between life and death in a crisis is almost never physical strength. It is knowing what to do. AEGIS puts that knowledge in every hand.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">◐</div>
+            <div class="about-card-title">No One Left Behind</div>
+            <div class="about-card-body">This system works on a five-year-old phone with no signal. The most vulnerable people — those furthest from hospitals, governments, and infrastructure — are exactly who AEGIS is built for.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">◑</div>
+            <div class="about-card-title">Civilization is Fragile</div>
+            <div class="about-card-body">Every great civilization has fallen. The knowledge of how to rebuild — metallurgy, medicine, agriculture, governance — must be preserved outside of the institutions that carry it.</div>
+          </div>
+          <div class="about-card">
+            <div class="about-card-icon">◧</div>
+            <div class="about-card-title">Open to All, Forever</div>
+            <div class="about-card-body">AEGIS is and will always be free. No paywall. No account required. No data collected. A single HTML file anyone can copy, share, and carry on a USB drive.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- What's Inside -->
+      <div class="about-section">
+        <div class="about-sec-label">◈ Inside AEGIS</div>
+        <div class="about-sec-title">53 Articles. 6 Domains. 10 Phases.</div>
+        <div class="about-domains-grid">
+          <div class="about-domain" style="border-color:rgba(255,75,75,.4)">
+            <span class="about-domain-icon" style="color:#ff4b4b">◈</span>
+            <span class="about-domain-name">Core Survival</span>
+            <span class="about-domain-count">14 articles</span>
+          </div>
+          <div class="about-domain" style="border-color:rgba(255,30,60,.4)">
+            <span class="about-domain-icon" style="color:#ff1e3c">✚</span>
+            <span class="about-domain-name">Emergency Medical</span>
+            <span class="about-domain-count">10 articles</span>
+          </div>
+          <div class="about-domain" style="border-color:rgba(30,144,255,.4)">
+            <span class="about-domain-icon" style="color:#1e90ff">◉</span>
+            <span class="about-domain-name">Water Systems</span>
+            <span class="about-domain-count">5 articles</span>
+          </div>
+          <div class="about-domain" style="border-color:rgba(46,213,115,.4)">
+            <span class="about-domain-icon" style="color:#2ed573">◐</span>
+            <span class="about-domain-name">Food Production</span>
+            <span class="about-domain-count">6 articles</span>
+          </div>
+          <div class="about-domain" style="border-color:rgba(51,153,255,.4)">
+            <span class="about-domain-icon" style="color:#3399ff">◧</span>
+            <span class="about-domain-name">Engineering</span>
+            <span class="about-domain-count">11 articles</span>
+          </div>
+          <div class="about-domain" style="border-color:rgba(180,100,255,.4)">
+            <span class="about-domain-icon" style="color:#b464ff">◑</span>
+            <span class="about-domain-name">Civilization Recovery</span>
+            <span class="about-domain-count">7 articles</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Creator -->
+      <div class="about-section">
+        <div class="about-sec-label">◈ Created By</div>
+        <div class="about-creator-card">
+          <div class="about-creator-glyph">✦</div>
+          <div>
+            <div class="about-creator-name">Aditya Shaswat</div>
+            <div class="about-creator-role">Founder &amp; Lead Developer, AEGIS Project</div>
+            <div class="about-creator-bio">
+              Built AEGIS with the belief that access to life-saving knowledge is a fundamental human right —
+              not a privilege of geography, connectivity, or circumstance. Every line of code written
+              with one question: what does a person need to know to survive and rebuild?
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub + Call to Action -->
+      <div class="about-section">
+        <div class="about-sec-label">◈ Join the Mission</div>
+        <div class="about-sec-title">Help Preserve Human Civilization</div>
+        <div class="about-sec-body">
+          AEGIS is open source. Every improvement — new articles, better translations, expanded medical
+          knowledge, improved AI — makes it more likely that when the worst happens, someone survives
+          because of what they could access. That is worth contributing to.
+        </div>
+        <div class="about-actions">
+          <a class="about-btn primary" href="https://github.com/Aditya-Shaswat/AEGIS" target="_blank">
+            ⌥ View on GitHub
+          </a>
+          <a class="about-btn secondary" href="https://github.com/Aditya-Shaswat/AEGIS/archive/refs/heads/main.zip" target="_blank">
+            ↓ Download AEGIS
+          </a>
+          <a class="about-btn ghost" href="https://github.com/Aditya-Shaswat/AEGIS/issues" target="_blank">
+            ◇ Contribute Knowledge
+          </a>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="about-footer">
+        <div class="about-footer-sigil">◈</div>
+        <div class="about-footer-text">
+          AEGIS — Adaptive Emergency Guide &amp; Intelligence System<br>
+          <span style="color:var(--t3)">Built by Aditya Shaswat · Open Source · Free Forever</span>
+        </div>
+        <div class="about-footer-quote">
+          "The measure of a civilization is not what it builds in times of abundance,<br>
+          but what it preserves for times of darkness."
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -2620,5 +3469,7 @@ function scrollMsgs() { const e=document.getElementById('msgs'); if(e) e.scrollT
 function setText(id, val) { const e=document.getElementById(id); if(e) e.textContent=val; }
 
 
+
+function pickDomain(d){setDomain(d);nav("chat");}
 </script>
 </html>
