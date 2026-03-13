@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
 <title>AEGIS — Civilization Intelligence System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=IBM+Plex+Sans+Condensed:wght@400;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap">
@@ -287,7 +287,194 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 @keyframes bprog{from{width:0}to{width:100%}}
 
 /* responsive */
-@media(max-width:900px){:root{--side:0px;--info-w:0px}#sidebar,#panel{display:none}#app{grid-template-columns:1fr}}
+
+/* ═══════════════════════════════════════════════
+   MOBILE — full responsive overhaul
+   ═══════════════════════════════════════════════ */
+@media(max-width:768px){
+  :root{
+    --top: auto;
+    --side: 0px;
+    --info-w: 0px;
+  }
+
+  /* Kill desktop overflow:hidden — mobile needs scroll */
+  html,body{ overflow:auto; height:auto; }
+
+  /* Stack layout vertically */
+  #app{
+    display:flex;
+    flex-direction:column;
+    height:auto;
+    min-height:100vh;
+  }
+
+  /* Hide sidebar and right panel completely */
+  #sidebar,#panel{ display:none !important; }
+
+  /* ── TOPBAR: stack into two rows ── */
+  #topbar{
+    flex-direction:column;
+    height:auto;
+    border-bottom:1px solid var(--br2);
+    position:sticky;
+    top:0;
+    z-index:200;
+  }
+
+  /* Row 1: logo + emergency toggle */
+  .tb-logo{
+    width:100%;
+    border-right:none;
+    border-bottom:1px solid var(--br2);
+    padding:10px 14px;
+    justify-content:space-between;
+  }
+  .logo-sub{ display:none; }
+
+  /* Row 2: nav buttons scrollable */
+  .tb-nav{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    border-bottom:1px solid var(--br2);
+  }
+  .tb-nav::-webkit-scrollbar{ display:none; }
+  .nb{
+    padding:0 13px;
+    font-size:8px;
+    white-space:nowrap;
+    flex-shrink:0;
+    min-height:36px;
+  }
+
+  /* Emergency toggle: inline in logo row */
+  #em-toggle{
+    border-left:none;
+    padding:6px 12px;
+    font-size:8px;
+    border:1px solid var(--br3);
+  }
+
+  /* Status dots row — hide on mobile, clutter */
+  .tb-status{ display:none; }
+
+  /* ── MAIN: fill remaining space ── */
+  #main{
+    flex:1;
+    overflow:visible;
+    height:auto;
+    min-height:calc(100vh - 90px);
+  }
+
+  /* ── VIEWS: full height natural scroll ── */
+  .view{
+    height:auto;
+    min-height:calc(100vh - 90px);
+    overflow:visible;
+  }
+
+  /* ── CHAT ── */
+  #v-chat{ flex-direction:column; min-height:calc(100vh - 90px); }
+
+  #chat-msgs{
+    flex:1;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    padding:14px 14px 4px;
+    min-height:200px;
+    max-height:60vh;
+  }
+
+  #chat-input-wrap{
+    padding:10px 14px 16px;
+    position:sticky;
+    bottom:0;
+    background:var(--bg1);
+    border-top:1px solid var(--br2);
+    z-index:50;
+  }
+
+  .chat-chips{
+    gap:5px;
+    margin-top:7px;
+    flex-wrap:wrap;
+  }
+  .chip{
+    font-size:7px;
+    padding:2px 7px;
+  }
+
+  /* ── BROWSE ── */
+  #v-browse{ flex-direction:column; }
+
+  .browse-list{
+    width:100%;
+    max-height:220px;
+    border-right:none;
+    border-bottom:1px solid var(--br2);
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .art-reader{
+    padding:16px 16px 24px;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .art-h1{ font-size:20px; }
+
+  /* ── EMERGENCY ── */
+  #v-emergency{ padding:14px; }
+
+  .em-grid{
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .em-card{ padding:12px 10px; }
+  .em-card-title{ font-size:12px; }
+  .em-card-desc{ font-size:10px; }
+
+  /* ── MODAL ── */
+  .modal-box{
+    width:96%;
+    max-height:92vh;
+    margin:0 auto;
+  }
+
+  /* ── INGEST ── */
+  #v-ingest{ padding:14px; gap:12px; }
+  .ingest-fields{ grid-template-columns:1fr; }
+  .drop-area{ padding:24px 14px; }
+
+  /* ── SYSTEM ── */
+  #v-system{ padding:14px; }
+  .sys-row-grid{ grid-template-columns:1fr; }
+  .hw-grid{ grid-template-columns:1fr 1fr; }
+
+  /* ── API PANEL ── */
+  .ap-box{
+    padding:24px 20px;
+    margin:0 10px;
+  }
+  .ap-title{ font-size:22px; }
+  .ap-row{ flex-direction:column; }
+  .ap-btn{ text-align:center; }
+
+  /* ── MESSAGES ── */
+  .msg{ padding:10px 0; }
+  .msg-body{ font-size:13px; }
+  .msg-safety{ flex-wrap:wrap; gap:5px; }
+}
+
+/* Extra small phones */
+@media(max-width:380px){
+  .em-grid{ grid-template-columns:1fr; }
+  .nb .n-label{ display:none; }
+  .nb .n-icon{ font-size:14px; }
+}
 </style>
 
 <body>
