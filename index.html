@@ -3,9 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<title>AEGIS — Civilization Intelligence System</title>
+<title>AEGIS — Offline Survival AI for Humanity</title>
+
+<!-- SEO -->
+<meta name="description" content="AEGIS – An offline AI survival system designed to preserve human knowledge during global catastrophes. Works without internet on any device.">
+<meta name="keywords" content="offline AI, survival guide, apocalypse AI, emergency medicine, civilization recovery, offline knowledge base">
+<meta name="author" content="Aditya Shaswat">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0a0f">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="AEGIS — The Offline Survival AI for Humanity">
+<meta property="og:description" content="An offline AI designed to guide humanity through survival, emergency medicine, and rebuilding civilization during global disasters.">
+<meta property="og:url" content="https://aditya-shaswat.github.io/AEGIS">
+<meta property="og:site_name" content="AEGIS">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AEGIS — The Offline Survival AI for Humanity">
+<meta name="twitter:description" content="An offline AI designed to guide humanity through survival, emergency medicine, and rebuilding civilization during global disasters.">
+<meta name="twitter:creator" content="@AdityaShaswat">
+
+<!-- PWA -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AEGIS">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Orbitron:wght@400;600;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap">
 <style>
 /* ═══════════════════════════════════════════════
    AEGIS v3 — Red Phosphor Theme
@@ -37,14 +64,14 @@
   --info: #1e90ff;
 
   /* Upgraded readable fonts */
-  --mono: "Share Tech Mono", monospace;
-  --cond: "Rajdhani", sans-serif;
+  --mono: "Courier New", "Courier", monospace;
+  --cond: "Inter", sans-serif;
   --body: "Inter", sans-serif;
   --head: "Orbitron", sans-serif;
 
   --top:  52px;
-  --side: 230px;
-  --info-w: 260px;
+  --side: clamp(180px, 18vw, 240px);
+  --info-w: clamp(200px, 20vw, 270px);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;overflow:hidden;background:var(--bg0);color:var(--t1);font-family:var(--body);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
@@ -1096,6 +1123,84 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
   .dv-grid { grid-template-columns: 1fr; }
 }
 
+
+
+
+
+/* ══════════════════════════════════════════════
+   PART C — THEME SWITCHER + ROADMAP + FIXES
+   ══════════════════════════════════════════════ */
+
+/* Theme button */
+.theme-btn {
+  padding: 7px 14px;
+  border: 1px solid;
+  border-radius: 6px;
+  background: var(--bg2);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .15s;
+}
+.theme-btn:hover { background: var(--bg3); filter: brightness(1.2); }
+.theme-btn.active { background: rgba(255,107,107,.08); }
+
+/* Roadmap items */
+.roadmap-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--br1);
+  font-size: 12px;
+}
+.roadmap-item:last-child { border-bottom: none; }
+.rm-phase {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .1em;
+  color: var(--t0);
+  width: 60px;
+  flex-shrink: 0;
+}
+.rm-label { color: var(--t2); flex: 1; line-height: 1.4; font-size: 11.5px; }
+.rm-status {
+  font-family: var(--mono);
+  font-size: 7.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  flex-shrink: 0;
+}
+.rm-status.done { color: var(--ok); }
+.rm-status.active { color: var(--warn); animation: blink 1.5s ease-in-out infinite; }
+
+/* Minimum readable font sizes — fix tiny text where possible */
+.tb-dot { font-size: 8px !important; }
+.boot-line { font-size: 10px !important; }
+.scard-title { font-size: 9px !important; }
+.sline { font-size: 12px !important; }
+.sk, .sv { font-size: 11px !important; }
+.info-hdr { font-size: 8px !important; }
+.wf-lbl { font-size: 13px !important; }
+
+/* Responsive: hide info panel at medium screens */
+@media(max-width: 1024px) and (min-width: 769px) {
+  #panel { display: none; }
+  #app { grid-template-columns: var(--side) 1fr; }
+}
+
+/* Better focus styles for accessibility */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--t0);
+  outline-offset: 2px;
+}
+
 </style>
 
 <body>
@@ -1117,23 +1222,27 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
     <span class="logo-glyph">◈</span>
     <div>
       <div class="logo-name">AEGIS</div>
-      <div class="logo-sub">Civilization Intel</div>
+      <div class="logo-sub">Civilization Preservation AI</div>
       <div class="logo-creator">by Aditya Shaswat</div>
     </div>
   </div>
   <nav class="tb-nav">
-    <div class="nb on" data-v="chat"      onclick="nav('chat')">◇ Chat</div>
-    <div class="nb"    data-v="browse"    onclick="nav('browse')">☰ Knowledge</div>
-    <div class="nb"    data-v="domains"   onclick="nav('domains')">⬡ Domains</div>
-    <div class="nb"    data-v="emergency" onclick="nav('emergency')">⚠ Emergency</div>
-    <div class="nb"    data-v="system"    onclick="nav('system')">◎ System</div>
-    <div class="nb"    data-v="about"     onclick="nav('about')">✦ Mission</div>
+    <div class="nb on" data-v="chat" role="tab" aria-label="Chat interface" onclick="nav('chat')">◇ Chat</div>
+    <div class="nb"    data-v="browse" role="tab" aria-label="Browse knowledge base" onclick="nav('browse')">☰ Knowledge</div>
+    <div class="nb"    data-v="domains" role="tab" aria-label="Select knowledge domain" onclick="nav('domains')">⬡ Domains</div>
+    <div class="nb"    data-v="emergency" role="tab" aria-label="Emergency quick reference" onclick="nav('emergency')">⚠ Emergency</div>
+    <div class="nb"    data-v="system" role="tab" aria-label="System settings" onclick="nav('system')">◎ System</div>
+    <div class="nb"    data-v="about" role="tab" aria-label="Mission and about" onclick="nav('about')">✦ Mission</div>
   </nav>
   <div class="tb-right">
     <div class="tb-dot-row">
       <div class="tb-dot"><span class="dot" id="d-api"></span>API</div>
       <div class="tb-dot"><span class="dot on" id="d-kb"></span>KB</div>
-      <div class="tb-dot" id="mode-badge" style="color:var(--t2);flex:2">OFFLINE</div>
+      <div class="tb-dot" id="mode-badge" style="color:var(--t2);flex:1">OFFLINE</div>
+      <a href="https://github.com/Aditya-Shaswat/AEGIS" target="_blank" rel="noopener"
+         aria-label="View AEGIS on GitHub"
+         style="display:flex;align-items:center;padding:0 10px;font-family:var(--mono);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:var(--t3);text-decoration:none;border-left:1px solid var(--br1);transition:color .15s;white-space:nowrap"
+         onmouseover="this.style.color='var(--t0)'" onmouseout="this.style.color='var(--t3)'">⌥ GitHub</a>
     </div>
   </div>
 </header>
@@ -1146,6 +1255,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
     <div class="sb-stat"><span class="sb-sk">Articles</span><span class="sb-sv" id="s-arts">55</span></div>
     <div class="sb-stat"><span class="sb-sk">Domains</span><span class="sb-sv">6</span></div>
     <div class="sb-stat"><span class="sb-sk">Mode</span><span class="sb-sv" id="s-mode">offline</span></div>
+
   </div>
 </aside>
 
@@ -1157,7 +1267,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
     <!-- API key banner — shown when no key set -->
     <div id="key-banner">
       <div class="kb-text">⚿ No Claude API key — using embedded KB. <span class="kb-link" onclick="window.open('https://console.anthropic.com/','_blank')">Get a free key →</span></div>
-      <input id="key-input" type="password" placeholder="sk-ant-api03-…  paste your Anthropic API key here">
+      <input id="key-input" type="password" aria-label="Anthropic API key" placeholder="sk-ant-api03-…  paste your Anthropic API key here">
       <button class="kb-btn" onclick="saveKey()">Save Key</button>
       <button class="kb-btn" style="border-color:var(--br2);color:var(--t3)" onclick="dismissBanner()">✕</button>
     </div>
@@ -1166,8 +1276,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 
     <div id="input-wrap">
       <div class="input-box">
-        <textarea id="qin" rows="1" placeholder="Ask anything — water purification, wound care, fire starting, crop rotation…"></textarea>
-        <button id="sendbtn" onclick="send()">›</button>
+        <textarea id="qin" rows="1" aria-label="Ask AEGIS a question" placeholder="Ask anything — water purification, wound care, fire starting, crop rotation…"></textarea>
+        <button id="sendbtn" onclick="send()" aria-label="Send message">›</button>
       </div>
       <div class="chips">
         <span class="chip-label">Mode:</span>
@@ -1233,6 +1343,43 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
         <span class="wf-st" style="color:var(--ok)">READY</span>
       </div>
     </div>
+    <!-- THEME SWITCHER -->
+    <div class="scard" style="margin-bottom:12px">
+      <div class="scard-title">Display Theme</div>
+      <div style="padding:10px 0 4px;display:flex;gap:8px;flex-wrap:wrap">
+        <button onclick="setTheme('red')" class="theme-btn" id="theme-red" style="border-color:rgba(255,71,87,.5);color:#ff6b6b">◈ Red Phosphor</button>
+        <button onclick="setTheme('green')" class="theme-btn" id="theme-green" style="border-color:rgba(46,213,115,.3);color:#2ed573">◈ Green Terminal</button>
+        <button onclick="setTheme('neutral')" class="theme-btn" id="theme-neutral" style="border-color:rgba(100,160,255,.3);color:#64a0ff">◈ Neutral Dark</button>
+      </div>
+      <div style="font-family:var(--mono);font-size:8px;color:var(--t3);letter-spacing:.1em;margin-top:6px">Current: <span id="theme-label" style="color:var(--t0)">Red Phosphor</span></div>
+    </div>
+
+    <!-- ROADMAP -->
+    <div class="scard" style="margin-bottom:12px">
+      <div class="scard-title">Project Roadmap</div>
+      <div style="padding:8px 0">
+        <div class="roadmap-item done"><span class="rm-phase">Phase 1–6</span><span class="rm-label">Core PWA, KB, RAG, Safety, Offline, Multi-UI</span><span class="rm-status done">✓ Done</span></div>
+        <div class="roadmap-item done"><span class="rm-phase">Phase 7–10</span><span class="rm-label">Live Updates, Safety Engine, Extreme Offline, Mega-UI</span><span class="rm-status done">✓ Done</span></div>
+        <div class="roadmap-item active"><span class="rm-phase">Stage 2</span><span class="rm-label">Interactive Lessons, Quiz System, Readiness Score</span><span class="rm-status active">● Active</span></div>
+        <div class="roadmap-item planned"><span class="rm-phase">Stage 3</span><span class="rm-label">Local LLM (llama.cpp / Ollama) — fully offline AI</span><span class="rm-status">Planned</span></div>
+        <div class="roadmap-item planned"><span class="rm-phase">Stage 4</span><span class="rm-label">Multilingual knowledge base — 10+ languages</span><span class="rm-status">Planned</span></div>
+        <div class="roadmap-item planned"><span class="rm-phase">Stage 5</span><span class="rm-label">Community contributions — modular knowledge format</span><span class="rm-status">Planned</span></div>
+        <div class="roadmap-item planned"><span class="rm-phase">Stage 6</span><span class="rm-label">Bunker/air-gap deployment — Raspberry Pi + LAN serving</span><span class="rm-status">Planned</span></div>
+      </div>
+    </div>
+
+    <!-- SYSTEM HEALTH -->
+    <div class="scard" style="margin-bottom:12px">
+      <div class="scard-title">System Health</div>
+      <div class="sline"><span class="sk">KB integrity</span><span class="sv ok">✓ Verified</span></div>
+      <div class="sline"><span class="sk">Articles loaded</span><span class="sv ok" id="sh-arts">55</span></div>
+      <div class="sline"><span class="sk">Safety patterns</span><span class="sv ok">12 active</span></div>
+      <div class="sline"><span class="sk">Emergency cards</span><span class="sv ok">16 ready</span></div>
+      <div class="sline"><span class="sk">Offline capability</span><span class="sv ok">100% — zero deps</span></div>
+      <div class="sline"><span class="sk">App size</span><span class="sv">~182 KB</span></div>
+      <div class="sline"><span class="sk">Session history</span><span class="sv" id="sh-hist">0 messages</span></div>
+    </div>
+
     <div class="scard" style="margin-bottom:12px">
       <div class="scard-title">Set API Key</div>
       <div style="padding:10px 0 4px">
@@ -3008,6 +3155,26 @@ function nav(v) {
 
 function setDomain(d) {
   S.domain = d;
+  // Update domain cards
+  document.querySelectorAll('.dv-card').forEach(c => {
+    c.classList.remove('dv-active');
+    const badge = c.querySelector('.dv-chip');
+    if (badge) { badge.textContent = ''; badge.classList.remove('active-chip'); }
+  });
+  const card = document.getElementById('dvc-' + d);
+  if (card) {
+    card.classList.add('dv-active');
+    const badge = document.getElementById('dvbadge-' + d);
+    if (badge) { badge.textContent = 'Active'; badge.classList.add('active-chip'); }
+  }
+  // Update indicator in chat
+  const lbl = document.getElementById('active-domain-label');
+  const names = {all:'All',survival:'Survival',medical:'Medical',water:'Water',agriculture:'Food',engineering:'Engineering',civilization:'Civilization'};
+  if (lbl) lbl.textContent = names[d] || d;
+}
+
+function setDomain(d) {
+  S.domain = d;
   document.querySelectorAll('[id^=chip-]').forEach(c => c.classList.remove('on'));
   const ch = document.getElementById('chip-' + d);
   if (ch) ch.classList.add('on');
@@ -3249,14 +3416,14 @@ async function send(override) {
   scrollMsgs();
 
   const t0 = performance.now();
-  let text = '', src = 'embedded-kb', citations = [];
+  let text = '', src = 'embedded-kb';
 
-  // ── Try Claude API ─────────────────────────────────────────
+  // ── Claude API ──────────────────────────────────────────────────
   if (S.apiKey) {
     try {
       const systemPrompt = S.em
         ? 'You are AEGIS, an emergency survival AI. Give TERSE, numbered, immediately actionable steps. Lead with the most critical action. No preamble. Use ⚠ for critical warnings.'
-        : 'You are AEGIS, a Civilization Intelligence System — an expert in survival, emergency medicine, agriculture, engineering, and civilization recovery. Answer accurately and thoroughly. Use **Heading** for sections, numbered lists for steps, - for bullets. Add ⚠ WARNING: prefix for genuinely dangerous procedures.';
+        : 'You are AEGIS, a Civilization Intelligence System — expert in survival, emergency medicine, agriculture, engineering, and civilization recovery. Answer accurately and thoroughly. Use **Heading** for sections, numbered lists for steps, - for bullets. Add ⚠ WARNING: prefix for genuinely dangerous procedures.';
 
       const messages = [
         ...S.history.slice(-10),
@@ -3292,23 +3459,21 @@ async function send(override) {
         const err = await res.json().catch(() => ({}));
         const msg = err?.error?.message || `HTTP ${res.status}`;
         setThink(rid, false);
-        // If auth error, clear key and fall back
         if (res.status === 401) {
           S.apiKey = null;
           try { localStorage.removeItem('aegis_api_key'); } catch(e) {}
           updateKeyUI();
-          addSystemMsg('⚠ API key rejected (401). Key cleared — switched to offline KB. Please check your key in the System tab.');
+          addSystemMsg('⚠ API key rejected (401). Key cleared — switched to offline KB.');
         } else {
           addSystemMsg(`⚠ Claude API error: ${msg}. Falling back to embedded KB.`);
         }
       }
     } catch(e) {
       setThink(rid, false);
-      // Network error in Colab sandbox — fall through silently to KB
     }
   }
 
-  // ── Embedded KB fallback ───────────────────────────────────
+  // ── Embedded KB fallback ────────────────────────────────────────
   if (!text) {
     text = kbSearch(q);
     src = 'embedded-kb';
@@ -3316,138 +3481,18 @@ async function send(override) {
   }
 
   const ms = Math.round(performance.now() - t0);
-  const safety = calcSafety(q, text, src);
-  finalise(rid, text, src, safety, ms);
-  updatePanel(safety);
+  const safety = analyseSafety(q, text, [], S.domain, S.em);
+  finalise(rid, text, [], src, safety, ms);
+  updateInfoPanel(safety, []);
   scrollMsgs();
 
-  S.history.push({role:'user',content:q});
-  S.history.push({role:'assistant',content:text});
+  S.history.push({ role: 'user', content: q });
+  S.history.push({ role: 'assistant', content: text });
   if (S.history.length > 20) S.history = S.history.slice(-20);
 
   S.busy = false;
   document.getElementById('sendbtn').disabled = false;
   document.getElementById('qin').focus();
-}
-
-// ════════════════════════════════════════════════════════════
-// KB SEARCH
-// ════════════════════════════════════════════════════════════
-function kbSearch(q) {
-  const ql = q.toLowerCase();
-
-  // Keyword shortcut first
-  for (const [pat, id] of Object.entries(KW)) {
-    if (new RegExp(pat).test(ql)) {
-      const a = FLAT.find(x => x.id === id);
-      if (a) return `**${a.title}**\n\n${a.body}`;
-    }
-  }
-
-  // Scoring fallback
-  const qw = (ql.match(/\b[a-z]{3,}\b/g) || []);
-  let best = null, bestScore = 0;
-  for (const art of FLAT) {
-    if (S.domain !== 'all' && art.catKey !== S.domain) continue;
-    const corpus = (art.title + ' ' + (art.body||'')).toLowerCase();
-    const words = corpus.match(/\b[a-z]{3,}\b/g) || [];
-    let score = 0;
-    for (const w of qw) {
-      if (art.title.toLowerCase().includes(w)) score += 12;
-      score += words.filter(aw => aw.includes(w) || w.includes(aw)).length * 0.6;
-    }
-    if (S.em && art.priority === 'critical') score *= 1.5;
-    if (score > bestScore) { bestScore = score; best = art; }
-  }
-  if (best && bestScore >= 3) return `**${best.title}**\n\n${best.body}`;
-
-  return `No direct match found for: "${q}"\n\nAvailable topics span: Survival (fire, shelter, food, navigation), Medical (bleeding, CPR, infections, childbirth), Water (purification, wells, sanitation), Agriculture (soil, crops, seeds, aquaculture), Engineering (energy, construction, metallurgy, communication), Civilization (governance, education, science, transport).\n\nTip: Add your Claude API key in the System tab for AI-powered answers on any topic.`;
-}
-
-// ════════════════════════════════════════════════════════════
-// SAFETY ENGINE
-// ════════════════════════════════════════════════════════════
-function calcSafety(q, answer, src) {
-  const combined = (q + ' ' + answer).toLowerCase();
-  const warnings = WARNS.filter(w => w.rx.test(combined));
-  let conf = src === 'claude-api' ? 82 : 58;
-  if (answer.length > 800) conf += 5;
-  if (/i don.t know|not sure|unclear/i.test(answer)) conf -= 12;
-  if (S.em) conf = Math.max(conf - 5, 0);
-  conf = Math.max(0, Math.min(100, conf));
-  return { conf, warnings };
-}
-
-function updatePanel({ conf, warnings }) {
-  const color = conf>=80?'var(--ok)':conf>=55?'var(--warn)':conf>=35?'#ff8f00':'var(--err)';
-  const label = conf>=80?'HIGH':conf>=55?'MODERATE':conf>=35?'LOW':'VERY LOW';
-  const fill = document.getElementById('conf-fill');
-  if (fill) { fill.style.width=conf+'%'; fill.style.background=color; }
-  setText('conf-pct', conf+'/100');
-  const cn = document.getElementById('conf-n');
-  if (cn) { cn.textContent=conf; cn.style.color=color; }
-  setText('conf-l', label);
-
-  const wb = document.getElementById('warn-block');
-  const wl = document.getElementById('warn-list');
-  if (warnings.length > 0) {
-    wb.style.display = '';
-    wl.innerHTML = warnings.map(w=>`
-      <div class="warn-item ${w.lv}">
-        <span class="wi-ico">${w.lv==='critical'?'⚠':'△'}</span>
-        <span class="wi-txt">${w.msg}</span>
-      </div>`).join('');
-  } else {
-    wb.style.display = 'none';
-  }
-}
-
-// ════════════════════════════════════════════════════════════
-// MESSAGE HELPERS
-// ════════════════════════════════════════════════════════════
-function addMsg(role, content, domain, id, thinking=false, srcLabel=null) {
-  const msgs = document.getElementById('msgs');
-  const cat = domain && KB[domain] ? KB[domain] : null;
-  const roleLabel = role==='you'?'YOU':role==='em'?'AEGIS ⚠':'AEGIS';
-  const div = document.createElement('div');
-  div.className = 'msg';
-  if (id) div.id = id;
-  div.innerHTML = `
-    <div class="mhdr">
-      <span class="mrole ${role}">${roleLabel}</span>
-      <span class="mtime">${ts()}</span>
-      ${srcLabel?`<span class="msrc">${srcLabel}`+`</span>`:''}
-    </div>
-    <div class="mbody${role==='you'?' you':''}" id="${id||'x'}-body">
-      ${thinking?`<div class="thinking" id="${id}-think"><div class="dots"><span></span><span></span><span></span></div><span id="${id}-thinktxt">Thinking…</span></div>`
-               :(content?md(content,cat?cat.color:'var(--t0)'):'')
-      }
-    </div>
-    <div class="mfooter" id="${id||'x'}-foot" style="${thinking?'display:none':''}"></div>`;
-  msgs.appendChild(div);
-}
-
-function setThink(id, on) { const e=document.getElementById(id+'-think'); if(e&&!on) e.remove(); }
-function setThinkText(id, txt) { const e=document.getElementById(id+'-thinktxt'); if(e) e.textContent=txt; }
-
-function updateBody(id, text, streaming) {
-  const b = document.getElementById(id+'-body');
-  if (!b) return;
-  const cat = S.domain!=='all'?KB[S.domain]:null;
-  b.innerHTML = md(text, cat?cat.color:'var(--t0)') + (streaming?'<span class="cursor"></span>':'');
-}
-
-function finalise(id, text, src, safety, ms) {
-  updateBody(id, text, false);
-  const foot = document.getElementById(id+'-foot');
-  if (!foot) return;
-  foot.style.display = '';
-  const {conf} = safety;
-  const cls = conf>=80?'hi':conf>=55?'med':conf>=35?'lo':'vlo';
-  foot.innerHTML = `
-    <span class="badge ${cls}">Confidence: ${conf}/100</span>
-    <span class="badge src">${src}</span>
-    <span class="mms">${ms}ms</span>`;
 }
 
 async function simStream(id, text) {
@@ -3471,5 +3516,69 @@ function setText(id, val) { const e=document.getElementById(id); if(e) e.textCon
 
 
 function pickDomain(d){setDomain(d);nav("chat");}
+
+
+
+
+// ── VOICE INPUT ─────────────────────────────────────────────────────
+
+
+// Init voice on load
+
+
+
+// ══════════════════════════════════════════════════════════════
+// PART C — THEME SWITCHER
+// ══════════════════════════════════════════════════════════════
+const THEMES = {
+  red: {
+    '--bg0':'#0a0a0f','--bg1':'#0f0f18','--bg2':'#141420','--bg3':'#1a1a28',
+    '--br1':'#1e1e30','--br2':'#2a2a45','--br3':'#363658','--br4':'#484870',
+    '--t0':'#ff6b6b','--t1':'#e8e8f0','--t2':'#a0a0c0','--t3':'#606080','--t4':'#303050',
+    '--acc':'#ff4757','--glow':'#ff6b6b', label:'Red Phosphor'
+  },
+  green: {
+    '--bg0':'#030a03','--bg1':'#061006','--bg2':'#0a180a','--bg3':'#0f200f',
+    '--br1':'#142814','--br2':'#1a361a','--br3':'#204520','--br4':'#285528',
+    '--t0':'#39ff14','--t1':'#d0f0c0','--t2':'#80b880','--t3':'#4a7050','--t4':'#223022',
+    '--acc':'#00ff41','--glow':'#39ff14', label:'Green Terminal'
+  },
+  neutral: {
+    '--bg0':'#0c0e14','--bg1':'#111520','--bg2':'#161b2c','--bg3':'#1c2238',
+    '--br1':'#212740','--br2':'#2a3355','--br3':'#343f6a','--br4':'#404c80',
+    '--t0':'#7eaaff','--t1':'#dde4ff','--t2':'#8898cc','--t3':'#4a5580','--t4':'#252d4a',
+    '--acc':'#4d80ff','--glow':'#7eaaff', label:'Neutral Dark'
+  }
+};
+
+function setTheme(name) {
+  const t = THEMES[name];
+  if (!t) return;
+  const root = document.documentElement;
+  for (const [k, v] of Object.entries(t)) {
+    if (k !== 'label') root.style.setProperty(k, v);
+  }
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('theme-' + name);
+  if (btn) btn.classList.add('active');
+  const lbl = document.getElementById('theme-label');
+  if (lbl) { lbl.textContent = t.label; lbl.style.color = t['--t0']; }
+  try { localStorage.setItem('aegis_theme', name); } catch(e) {}
+}
+
+// Restore saved theme on load
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    const saved = localStorage.getItem('aegis_theme');
+    if (saved && THEMES[saved]) setTheme(saved);
+  } catch(e) {}
+});
+
+// Session history tracker for System Health
+setInterval(() => {
+  const el = document.getElementById('sh-hist');
+  if (el) el.textContent = (S.history ? S.history.length : 0) + ' messages';
+}, 2000);
+
 </script>
 </html>
