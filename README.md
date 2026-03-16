@@ -1,6 +1,4 @@
 # AEGIS
-AEGIS is an offline AI survival and knowledge system designed to preserve critical human knowledge and provide guidance for survival, medicine, engineering, and rebuilding civilization during global disasters or societal collapse.
-
 AEGIS Autonomous Emergency Guidance & Intelligence System
 
 AEGIS is an offline-first artificial intelligence system designed to preserve and provide critical knowledge required for human survival during extreme global emergencies such as wars, natural disasters, or societal collapse.
