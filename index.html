@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+  <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogIkFFR0lTIFx1MjAxNCBDaXZpbGl6YXRpb24gSW50ZWxsaWdlbmNlIFN5c3RlbSIsICJzaG9ydF9uYW1lIjogIkFFR0lTIiwgImRlc2NyaXB0aW9uIjogIk9mZmxpbmUgc3Vydml2YWwgaW50ZWxsaWdlbmNlIiwgInN0YXJ0X3VybCI6ICIuLyIsICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLCAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGEwYTBmIiwgInRoZW1lX2NvbG9yIjogIiNmZjQ3NTciLCAib3JpZW50YXRpb24iOiAiYW55IiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCclM0UlM0NjaXJjbGUgY3g9JzUwJyBjeT0nNTAnIHI9JzQ4JyBmaWxsPSclMjMwYTBhMGYnIHN0cm9rZT0nJTIzZmY0NzU3JyBzdHJva2Utd2lkdGg9JzMnLyUzRSUzQ3RleHQgeD0nNTAnIHk9JzY0JyB0ZXh0LWFuY2hvcj0nbWlkZGxlJyBmb250LXNpemU9JzMyJyBmaWxsPSclMjNmZjZiNmInIGZvbnQtZmFtaWx5PSdtb25vc3BhY2UnIGZvbnQtd2VpZ2h0PSdib2xkJyUzRUFHJTNDL3RleHQlM0UlM0Mvc3ZnJTNFIiwgInNpemVzIjogImFueSIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkgbWFza2FibGUifV19">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>AEGIS — Offline Survival AI for Humanity</title>
 
@@ -53,7 +54,7 @@
   --t0:   #ff6b6b;   /* primary — bright coral red */
   --t1:   #e8e8f0;   /* body text — near white, readable */
   --t2:   #a0a0c0;   /* secondary text — soft lavender-grey */
-  --t3:   #606080;   /* muted text */
+  --t3:   #9090a8;   /* muted text */
   --t4:   #303050;   /* very dim */
   --acc:  #ff4757;   /* accent — pure crimson */
   --glow: #ff6b6b;
@@ -64,7 +65,7 @@
   --info: #1e90ff;
 
   /* Upgraded readable fonts */
-  --mono: "Courier New", "Courier", monospace;
+  --mono: "JetBrains Mono", "Courier New", monospace;
   --cond: "Inter", sans-serif;
   --body: "Inter", sans-serif;
   --head: "Orbitron", sans-serif;
@@ -74,7 +75,7 @@
   --info-w: clamp(200px, 20vw, 270px);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg0);color:var(--t1);font-family:var(--body);font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+html,body{height:100%;overflow:hidden;background:var(--bg0);color:var(--t1);font-family:var(--body);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
 ::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-track{background:var(--bg1)}
 ::-webkit-scrollbar-thumb{background:var(--br3)}
@@ -289,9 +290,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;
 .ci-fill{height:100%;transition:width .5s}
 .ci-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:7px;color:var(--t3);text-transform:uppercase;margin-top:2px}
 
-.phase-item{display:flex;align-items:center;gap:7px;padding:4px 12px;border-bottom:1px solid var(--br1);font-family:var(--mono);font-size:7.5px}
-.ph-n{color:var(--t3);width:18px;text-align:right}.ph-l{color:var(--t2);flex:1}
-.ph-s{text-transform:uppercase;font-size:7px;letter-spacing:.1em}
+.phase-item{display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--br1);font-family:var(--mono);font-size:11px}
+.ph-n{color:var(--t3);width:24px;text-align:right;font-size:10px}.ph-l{color:var(--t2);flex:1;font-size:11px}
+.ph-s{text-transform:uppercase;font-size:9px;letter-spacing:.1em}
 .ph-s.done{color:var(--ok)}.ph-s.active{color:var(--warn);animation:blink 1.5s ease-in-out infinite}.ph-s.planned{color:var(--t3)}
 
 /* ── MODAL ───────────────────────────────────── */
@@ -1277,11 +1278,11 @@ a:focus-visible {
 .scard3:hover { border-color: var(--br3); }
 .s3-title {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .18em;
+  font-size: 9.5px;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  color: var(--t3);
-  padding: 12px 16px 10px;
+  color: var(--t2);
+  padding: 13px 16px 11px;
   border-bottom: 1px solid var(--br2);
   background: var(--bg2);
 }
@@ -1302,8 +1303,8 @@ a:focus-visible {
 .wf2-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
+  gap: 14px;
+  padding: 16px 18px;
   border-bottom: 1px solid var(--br1);
 }
 .wf2-item:last-child { border-bottom: none; }
@@ -1316,7 +1317,7 @@ a:focus-visible {
   text-align: center;
 }
 .wf2-dot {
-  width: 10px; height: 10px;
+  width: 12px; height: 12px;
   border-radius: 50%;
   background: var(--br3);
   border: 1px solid var(--br3);
@@ -1330,8 +1331,8 @@ a:focus-visible {
   animation: blink 2.5s ease-in-out infinite;
 }
 .wf2-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
-.wf2-name { font-size: 13px; color: var(--t1); font-weight: 500; }
-.wf2-sub { font-size: 11px; color: var(--t3); }
+.wf2-name { font-size: 14px; color: var(--t1); font-weight: 500; }
+.wf2-sub { font-size: 12px; color: var(--t3); }
 .wf2-status {
   font-family: var(--mono);
   font-size: 9px;
@@ -1656,60 +1657,89 @@ body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
   gap: 18px;
   padding: 24px 0 8px;
 }
-.jarvis-ring-wrap {
-  /* Fixed-size square — all children absolutely centred inside */
-  position: relative;
-  width: 130px;
-  height: 130px;
-  flex-shrink: 0;
-  /* Centre everything with flex instead of position tricks */
+
+/* ══════════════════════════════════════════════
+   AI CORE — JARVIS / Iron Man style
+   ══════════════════════════════════════════════ */
+
+.ai-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,71,87,.55);
+  box-shadow: 0 0 8px rgba(255,71,87,.3), inset 0 0 8px rgba(255,71,87,.2);
+}
+.ai-ring-1 {
+  width: 200px; height: 200px;
+  border-color: rgba(255,71,87,.35);
+  animation: rotate-cw 25s linear infinite;
+  /* HUD tick marks */
+  background: conic-gradient(
+    transparent 0deg, rgba(255,71,87,.5) 4deg, transparent 8deg,
+    transparent 88deg, rgba(255,71,87,.5) 92deg, transparent 96deg,
+    transparent 178deg, rgba(255,71,87,.5) 182deg, transparent 186deg,
+    transparent 268deg, rgba(255,71,87,.5) 272deg, transparent 276deg,
+    transparent 360deg
+  );
+}
+.ai-ring-2 {
+  width: 158px; height: 158px;
+  border-color: rgba(255,107,107,.45);
+  border-style: dashed;
+  animation: rotate-ccw 16s linear infinite, ai-pulse 3s ease-in-out infinite;
+}
+.ai-ring-3 {
+  width: 118px; height: 118px;
+  border-color: rgba(255,71,87,.3);
+  animation: rotate-cw 10s linear infinite;
+}
+.ai-core-center {
+  position: absolute;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  border: 2px solid var(--acc);
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  background: radial-gradient(circle, rgba(255,71,87,.12) 0%, transparent 70%);
+  box-shadow: 0 0 20px rgba(255,71,87,.4), inset 0 0 12px rgba(255,71,87,.1);
+  z-index: 2;
+  gap: 2px;
+}
+.ai-core-label {
+  font-family: var(--head);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--t0);
+  text-shadow: 0 0 10px var(--glow);
 }
 
-/* Every ring child is absolute, centred via inset+margin auto */
-.jarvis-ring {
+/* Radar sweep line */
+.ai-radar-sweep {
   position: absolute;
-  border-radius: 50%;
-  border: 1px solid;
-  /* Use margin:auto with inset:0 instead of top/left+translate */
-  inset: 0;
-  margin: auto;
-  animation: ring-spin linear infinite;
-}
-.jr1 {
-  width: 128px; height: 128px;
-  border-color: rgba(255,107,107,.35);
-  animation-duration: 12s;
-}
-.jr2 {
-  width: 90px; height: 90px;
-  border-color: rgba(255,107,107,.25);
-  border-style: dashed;
-  animation-duration: 8s;
-  animation-direction: reverse;
-}
-.jr3 {
-  width: 54px; height: 54px;
-  border-color: rgba(255,107,107,.18);
-  animation-duration: 5s;
-}
-/* Radar sweep — also centred via margin:auto */
-.jr-scan {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 128px; height: 128px;
+  width: 200px; height: 200px;
   border-radius: 50%;
   background: conic-gradient(
-    transparent 0deg,
-    rgba(255,107,107,.06) 25deg,
-    rgba(255,107,107,.20) 55deg,
-    transparent 85deg
+    rgba(255,71,87,.18) 0deg,
+    rgba(255,71,87,.04) 50deg,
+    transparent 90deg
   );
-  animation: ring-spin 3s linear infinite;
+  animation: rotate-cw 3s linear infinite;
+  z-index: 1;
 }
+/* Orbit dots */
+.ai-orbit-dot {
+  position: absolute;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--t0);
+  box-shadow: 0 0 6px var(--t0);
+}
+@keyframes rotate-cw  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
+@keyframes rotate-ccw { from { transform: rotate(360deg); } to { transform: rotate(0deg);    } }
+@keyframes ai-pulse   { 0%,100% { opacity:.6; } 50% { opacity:1; } }
+
 /* Central glowing core — absolute, margin:auto */
 .jr-core {
   position: absolute;
@@ -1893,79 +1923,20 @@ body.daylight-mode ::-webkit-scrollbar-thumb { background: #9aa5b8; }
 }
 
 
-/* ══ SYSTEM PANEL REDESIGN ══════════════════════════════════ */
-.theme-compact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--br1);
-}
-.tc-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 11px 14px;
-  background: var(--bg1);
-  border: none;
-  cursor: pointer;
-  transition: background .12s;
-  width: 100%;
-}
-.tc-btn:hover { background: var(--bg2); }
-.tc-btn.tc-active { background: rgba(255,107,107,.08); }
-.tc-swatch {
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-.tc-name {
-  flex: 1;
-  font-size: 12px;
-  color: var(--t1);
-  font-family: var(--body);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.tc-check {
-  font-size: 11px;
-  color: var(--ok);
-  width: 14px;
-  text-align: center;
-  flex-shrink: 0;
-}
-.health-grid3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--br1);
-}
-.hg3-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 6px;
-  background: var(--bg1);
-  text-align: center;
-  gap: 4px;
-  transition: background .12s;
-}
+
+
+
+
+
+
+
+
+
+
 .hg3-item:hover { background: var(--bg2); }
-.hg3-v {
-  font-family: var(--head);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--t2);
-  line-height: 1;
-}
-.hg3-v.ok { color: var(--ok); }
-.hg3-k {
-  font-family: var(--mono);
-  font-size: 7.5px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--t3);
-}
+
+
+
 /* ══ JARVIS ELEMENTS ════════════════════════════════════════ */
 /* Scanning beam */
 #app::after {
@@ -2074,8 +2045,8 @@ body.daylight-mode #main { background-image: none !important; }
 }
 /* Mobile */
 @media(max-width:768px) {
-  .theme-compact-grid { grid-template-columns: 1fr; }
-  .health-grid3 { grid-template-columns: repeat(3, 1fr); }
+  
+  
   .jarvis-module-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -2084,300 +2055,79 @@ body.daylight-mode #main { background-image: none !important; }
    JARVIS AI CORE — 3-ring rotating system
    ══════════════════════════════════════════════════════════════ */
 
-.ai-core-container {
-  position: relative;
-  width: 260px;
-  height: 260px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
+
+
+
+/* ── Ring base — FIXED: inset+margin centers without affecting transform ── */
 .ring {
   position: absolute;
+  inset: 0;
+  margin: auto;
   border-radius: 50%;
-  border: 1px solid rgba(255,71,87,.55);
-  box-shadow:
-    0 0 10px rgba(255,71,87,.3),
-    inset 0 0 10px rgba(255,71,87,.15);
-}
-.ring1 {
-  width: 160px;
-  height: 160px;
-  border: 1px solid rgba(255,107,107,.6);
-  animation: rotateClockwise 10s linear infinite;
-  background: conic-gradient(
-    transparent 0deg,
-    rgba(255,71,87,.6) 8deg,
-    transparent 16deg,
-    rgba(255,71,87,.4) 38deg,
-    transparent 55deg,
-    rgba(255,71,87,.5) 88deg,
-    transparent 105deg,
-    rgba(255,71,87,.3) 155deg,
-    transparent 180deg,
-    rgba(255,71,87,.5) 218deg,
-    transparent 240deg,
-    rgba(255,71,87,.4) 290deg,
-    transparent 320deg,
-    rgba(255,71,87,.6) 355deg,
-    transparent 360deg
-  );
-}
-.ring2 {
-  width: 210px;
-  height: 210px;
-  animation:
-    rotateCounter 16s linear infinite,
-    ringpulse 3s ease-in-out infinite;
-}
-.ring3 {
-  width: 260px;
-  height: 260px;
-  animation: rotateClockwise 28s linear infinite;
-  border: 1px dashed rgba(255,71,87,.2);
-}
-@keyframes rotateClockwise {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes rotateCounter {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
-}
-@keyframes ringpulse {
-  0%,100% { opacity: .4; }
-  50%      { opacity: 1; }
+  border: 1px solid rgba(255,71,87,.5);
+  box-shadow: 0 0 8px rgba(255,71,87,.25), inset 0 0 6px rgba(255,71,87,.1);
 }
 
-.ai-core {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: 2px solid var(--acc);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--head);
-  letter-spacing: 3px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--t0);
-  background: radial-gradient(circle, rgba(255,71,87,.12) 0%, rgba(255,71,87,.02) 70%, transparent 100%);
-  box-shadow:
-    0 0 20px rgba(255,71,87,.4),
-    0 0 50px rgba(255,71,87,.12),
-    inset 0 0 20px rgba(255,71,87,.08);
-  z-index: 10;
-}
-.ai-core-sub {
-  font-family: var(--mono);
-  font-size: 6px;
-  letter-spacing: .2em;
-  color: var(--ok);
-  margin-top: 4px;
-}
-.ai-core-pulse {
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid rgba(255,71,87,.2);
-  animation: ring-expand 3s ease-out infinite;
-}
-@keyframes ring-expand {
-  0%   { transform: scale(1);   opacity: .6; }
+/* Ring 1 — innermost with HUD tick marks */
+
+
+/* Ring 2 — mid dashed, counter-rotating with pulse */
+
+
+/* Ring 3 — outermost, slow clockwise */
+
+
+
+
+
+
+
+
+
   100% { transform: scale(1.4); opacity: 0;  }
 }
 
-/* Radar scan inside ring1 */
-.ring-scan {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: conic-gradient(
-    rgba(255,71,87,.25) 0deg,
-    rgba(255,71,87,.05) 60deg,
-    transparent 90deg,
-    transparent 360deg
-  );
-  animation: rotateClockwise 4s linear infinite;
-  pointer-events: none;
-}
+
+
 
 /* Welcome screen layout — ring center with data panels */
-.welcome-layout {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: 16px;
-  align-items: center;
-  padding: 20px 0 16px;
-}
-.welcome-left, .welcome-right {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.welcome-center {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.welcome-center-label {
-  font-family: var(--head);
-  font-size: 9px;
-  letter-spacing: .22em;
-  color: var(--t3);
-  text-transform: uppercase;
-}
-.wdata-item {
-  background: var(--bg2);
-  border: 1px solid var(--br2);
-  border-left: 2px solid var(--acc);
-  padding: 8px 10px;
-  border-radius: 0 6px 6px 0;
-}
-.wdata-item.ok  { border-left-color: var(--ok); }
-.wdata-item.warn{ border-left-color: var(--warn); }
-.wdata-item.info{ border-left-color: var(--info); }
-.wdata-label {
-  font-family: var(--mono);
-  font-size: 7.5px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--t3);
-  margin-bottom: 3px;
-}
-.wdata-val {
-  font-family: var(--head);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--t0);
-  line-height: 1;
-}
-.wdata-val.ok   { color: var(--ok); }
-.wdata-val.info { color: var(--info); }
-.wdata-sub {
-  font-family: var(--mono);
-  font-size: 7px;
-  color: var(--t3);
-  margin-top: 2px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ══ THEME PICKER — clean single source of truth ══ */
-.theme-picker-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--br1);
-  gap: 1px;
-}
-.tp-btn {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 14px;
-  background: var(--bg1);
-  border: none;
-  cursor: pointer;
-  transition: background .12s;
-  text-align: left;
-  position: relative;
-  -webkit-tap-highlight-color: transparent;
-  min-height: 44px; /* touch target */
-}
-.tp-btn:hover  { background: var(--bg2); }
-.tp-btn:active { background: var(--bg3); }
-.tp-btn.is-active {
-  background: linear-gradient(90deg, rgba(255,71,87,.14), rgba(255,71,87,.04));
-  border-left: 3px solid var(--acc);
-  padding-left: 11px;
-}
-.tp-swatch {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  border: 1px solid rgba(255,255,255,.1);
-}
-.tp-text { flex: 1; min-width: 0; }
-.tp-name {
-  font-size: 12.5px;
-  color: var(--t1);
-  font-family: var(--body);
-  font-weight: 500;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: block;
-}
-.tp-desc {
-  font-family: var(--mono);
-  font-size: 8px;
-  color: var(--t3);
-  letter-spacing: .06em;
-  margin-top: 2px;
-  display: block;
-}
-.tp-check {
-  font-size: 14px;
-  color: var(--ok);
-  width: 18px;
-  text-align: center;
-  flex-shrink: 0;
-  opacity: 0;
-  transition: opacity .15s;
-}
-.tp-btn.is-active .tp-check { opacity: 1; }
-.theme-active-note {
-  padding: 8px 16px;
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--t3);
-  letter-spacing: .1em;
-  border-top: 1px solid var(--br1);
-  background: var(--bg0);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* ══ SYSTEM HEALTH — improved ══ */
-.sys-health-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  background: var(--br1);
-  gap: 1px;
-}
-.shg-cell {
-  background: var(--bg1);
-  padding: 12px 8px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  transition: background .12s;
-  min-height: 56px;
-}
-.shg-cell:hover { background: var(--bg2); }
-.shg-num {
-  font-family: var(--head);
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--t2);
-  line-height: 1;
-}
-.shg-num.ok   { color: var(--ok); }
-.shg-num.warn { color: var(--warn); }
-.shg-lbl {
-  font-family: var(--mono);
-  font-size: 7.5px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--t3);
-  line-height: 1.3;
-  text-align: center;
-}
+
+
+
+
+
+
+
 
 /* ══ MOBILE FULL OVERHAUL ══ */
 @media(max-width:768px) {
@@ -2385,29 +2135,16 @@ body.daylight-mode #main { background-image: none !important; }
   body { overflow-x: hidden; }
 
   /* Welcome layout stacks on mobile */
-  .welcome-layout {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-  .welcome-left, .welcome-right {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .wdata-item { flex: 1; min-width: 120px; }
-  .ai-core-container { width: 200px; height: 200px; }
-  .ring1 { width: 120px; height: 120px; }
-  .ring2 { width: 160px; height: 160px; }
-  .ring3 { width: 200px; height: 200px; }
-  .ring-scan { width: 120px; height: 120px; }
-  .ai-core { width: 80px; height: 80px; font-size: 10px; }
+  
+  
+  
 
   /* Module grid 2-col on mobile */
   .jarvis-module-grid { grid-template-columns: repeat(3,1fr); gap: 5px; }
   .jm-icon { font-size: 16px; }
 
   /* Theme picker single column */
-  .theme-picker-grid { grid-template-columns: 1fr; }
+  
 
   /* Nav pills smaller */
   .nb { padding: 0 10px !important; font-size: 8px !important; }
@@ -2415,10 +2152,7 @@ body.daylight-mode #main { background-image: none !important; }
   .logo-creator { display: none; }
 
   /* Touch-friendly buttons */
-  button, .nb, .emcard, .tp-btn {
-    min-height: 44px;
-    touch-action: manipulation;
-  }
+  button, .nb, .emcard, 
 
   /* Fix overflow in message body */
   .mbody { overflow-wrap: break-word; word-break: break-word; }
@@ -2431,20 +2165,679 @@ body.daylight-mode #main { background-image: none !important; }
   .sys-scroll { padding: 14px 12px 40px; }
 
   /* Health grid */
-  .sys-health-grid { grid-template-columns: repeat(3,1fr); }
+  
 }
 
 @media(max-width:400px) {
   .jarvis-module-grid { grid-template-columns: repeat(2,1fr); }
-  .sys-health-grid { grid-template-columns: repeat(2,1fr); }
-  .theme-picker-grid { grid-template-columns: 1fr; }
+  
+  
   .nb .n-label { display: none; }
 }
 
 /* Battery mode — no animations */
 body.battery-mode .ring,
 body.battery-mode .ai-core-pulse,
-body.battery-mode .ring-scan { animation: none !important; }
+body.battery-mode 
+
+
+/* ── THEME PICKER — active state fix ── */
+
+
+
+/* ensure first button (red) starts active */
+#theme-red.is-active { border-left: 2px solid #ff6b6b !important; }
+#theme-green.is-active { border-left: 2px solid #39ff14 !important; }
+#theme-neutral.is-active { border-left: 2px solid #7eaaff !important; }
+#theme-daylight.is-active { border-left: 2px solid #0a52cc !important; }
+#theme-night.is-active { border-left: 2px solid #ff9d4d !important; }
+#theme-battery.is-active { border-left: 2px solid #888 !important; }
+
+
+/* ── WELCOME LAYOUT — 3 columns beside AI core ── */
+.jarvis-welcome-layout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 8px 4px;
+}
+.jwl-left, .jwl-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 90px;
+  flex-shrink: 0;
+}
+.jwl-metric {
+  text-align: center;
+  padding: 8px 4px;
+  background: var(--bg2);
+  border: 1px solid var(--br2);
+  border-radius: 8px;
+}
+.jwl-num {
+  font-family: var(--head);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--t0);
+  line-height: 1;
+}
+.jwl-lbl {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-top: 3px;
+}
+.jwl-divider {
+  height: 1px;
+  background: var(--br2);
+}
+.jwl-stat-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t2);
+}
+.jwl-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: blink 2.5s ease-in-out infinite;
+}
+
+/* ── PHONE / MOBILE ── */
+@media(max-width:520px) {
+  .jarvis-welcome-layout { gap: 8px; }
+  .jwl-left, .jwl-right { width: 64px; }
+  .jwl-num { font-size: 18px; }
+  
+  .ai-ring-1 { width: 148px; height: 148px; }
+  .ai-ring-2 { width: 114px; height: 114px; }
+  .ai-ring-3 { width: 82px; height: 82px; }
+  .ai-radar-sweep { width: 148px; height: 148px; }
+  .ai-core-center { width: 56px; height: 56px; }
+  .ai-core-label { font-size: 8px; letter-spacing: 2px; }
+  .jarvis-module-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media(max-width:360px) {
+  .jwl-left, .jwl-right { display: none; }
+  
+}
+
+
+/* ── Mobile ring sizing ── */
+@media(max-width:520px) {
+  
+  
+  
+  
+  
+  
+  
+}
+@media(max-width:360px) {
+  
+  
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   JARVIS AI COMMAND CENTER — 3-panel layout
+   ══════════════════════════════════════════════════════════════ */
+
+.ai-command-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 8px 12px;
+  width: 100%;
+}
+
+/* Side panels */
+.ai-side-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 110px;
+  max-width: 130px;
+  flex-shrink: 0;
+}
+.asp-label {
+  font-family: var(--mono);
+  font-size: 7px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--acc);
+  padding: 6px 0 4px;
+  border-bottom: 1px solid var(--br2);
+  margin-bottom: 4px;
+}
+.asp-divider {
+  height: 1px;
+  background: var(--br2);
+  margin: 8px 0 4px;
+}
+.asp-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 0;
+  gap: 6px;
+}
+.asp-k {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--t3);
+  letter-spacing: .06em;
+  flex-shrink: 0;
+}
+.asp-v {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--t2);
+  letter-spacing: .06em;
+  text-align: right;
+}
+.asp-v.ok { color: var(--ok); }
+.asp-btn {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .08em;
+  color: var(--t2);
+  padding: 5px 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--br1);
+  transition: color .12s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.asp-btn:last-child { border-bottom: none; }
+.asp-btn:hover { color: var(--t0); }
+
+/* ── AI CORE RINGS ── */
+
+
+/* Central glowing core */
+
+
+
+
+
+
+/* Rings — positioned via inset 0 + margin auto */
+.ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 71, 87, 0.5);
+  box-shadow: 0 0 8px rgba(255,71,87,.25), inset 0 0 8px rgba(255,71,87,.15);
+}
+
+/* Ring 1 — innermost, with HUD tick marks */
+
+@keyframes ring-pulse {
+  0%, 100% { opacity: .5; }
+  50%       { opacity: 1; }
+}
+
+/* ── THEME PICKER ── */
+
+
+
+
+
+
+
+
+
+
+
+/* ── SYSTEM HEALTH GRID ── */
+
+
+
+
+
+
+
+/* Battery mode: disable all ring animations */
+body.battery-mode .ring,
+body.battery-mode 
+body.battery-mode
+
+/* ══ MOBILE — phone-first improvements ═════════════════════════ */
+@media (max-width: 768px) {
+
+  /* AI command center — stack vertically on phone */
+  .ai-command-center {
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 12px 8px;
+  }
+  .ai-side-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    gap: 0 16px;
+  }
+  .asp-label { width: 100%; }
+  .asp-row { width: calc(50% - 8px); }
+  .asp-btn { width: calc(50% - 8px); }
+  
+  
+
+  /* System panel — single column theme grid on phone */
+  
+  
+
+  /* Touch targets — all interactive elements min 44px */
+  .nb { min-height: 40px; }
+  
+  .key-btn { min-height: 48px; padding: 12px 18px; }
+  .key-input { min-height: 48px; font-size: 14px !important; }
+  .emcard { min-height: 70px; }
+
+  /* Bigger text on mobile for readability */
+  
+  
+  .wf2-name { font-size: 14px; }
+  .s2-k, .s2-v { font-size: 13px !important; }
+  
+
+  /* Modules grid — 2 col on phone */
+  .jarvis-module-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 400px) {
+  /* Extra small phones — single column for most things */
+  
+  
+}
+
+
+/* ══════════════════════════════════════════════
+   SYSTEM TAB — single authoritative CSS block
+   All previous versions removed above
+   ══════════════════════════════════════════════ */
+
+/* Theme picker grid */
+.theme-picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: var(--br1);
+  gap: 1px;
+  overflow: hidden;
+}
+
+/* Theme button base */
+
+.tp-btn:hover   { background: var(--bg2); border-left-color: var(--br4); }
+.tp-btn:active  { background: var(--bg3); }
+
+/* Active state — SINGLE authoritative definition */
+.tp-btn.is-active {
+  background: rgba(255,71,87,.12);
+  border-left: 3px solid var(--acc);
+}
+.tp-btn.is-active .tp-name { color: var(--t0); }
+.tp-btn.is-active .tp-check { opacity: 1; }
+
+.tp-swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tp-text   { display: flex; flex-direction: column; gap: 3px; flex: 1; min-width: 0; }
+.tp-name   { font-size: 13px; color: var(--t1); font-family: var(--body); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tp-desc   { font-size: 10px; color: var(--t3); font-family: var(--mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tp-check  { font-size: 13px; color: var(--ok); width: 18px; text-align: center; flex-shrink: 0; opacity: 0; }
+
+.theme-active-note {
+  padding: 9px 16px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .12em;
+  color: var(--t3);
+  border-top: 1px solid var(--br1);
+}
+
+/* System health grid */
+.sys-health-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--br1);
+  gap: 1px;
+}
+.shg-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  background: var(--bg1);
+  text-align: center;
+  gap: 5px;
+  transition: background .12s;
+}
+.shg-cell:hover  { background: var(--bg2); }
+.shg-num {
+  font-family: var(--head);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--t2);
+  line-height: 1;
+}
+.shg-num.ok { color: var(--ok); }
+.shg-lbl {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--t3);
+  line-height: 1.3;
+}
+
+/* ══ BATTERY SAVER — pure information, no decoration ══════════ */
+body.battery-mode * {
+  animation: none !important;
+  transition: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-image: none !important;
+}
+/* Restore essential backgrounds */
+body.battery-mode { background: #000 !important; color: #e0e0e0 !important; }
+body.battery-mode #topbar { background: #000 !important; border-bottom: 1px solid #222 !important; }
+body.battery-mode #sidebar, body.battery-mode #panel { background: #000 !important; border-color: #222 !important; }
+body.battery-mode #main { background: #000 !important; }
+body.battery-mode .msg { background: #0a0a0a !important; border-color: #1e1e1e !important; }
+body.battery-mode .input-box { background: #0a0a0a !important; border-color: #222 !important; }
+body.battery-mode .scard2, body.battery-mode .scard3 { background: #0a0a0a !important; border-color: #1e1e1e !important; }
+body.battery-mode .shg-cell { background: #0a0a0a !important; }
+/* Remove ALL decorative elements in battery mode */
+body.battery-mode .ai-command-center,
+body.battery-mode .welcome-layout,
+body.battery-mode .ai-core-container,
+body.battery-mode .ring,
+body.battery-mode .ring-scan,
+body.battery-mode .status-bar-wrap,
+body.battery-mode .jarvis-module-grid,
+body.battery-mode #alert-bar,
+body.battery-mode #app::after,
+body.battery-mode body::after,
+body.battery-mode .ai-wave { display: none !important; }
+/* Keep the text content of welcome but hide the decoration */
+body.battery-mode .welcome-left,
+body.battery-mode .welcome-right,
+body.battery-mode 
+/* Simple text header in battery mode instead */
+body.battery-mode #msgs > .msg:first-child .mbody::before {
+  content: 'AEGIS — Offline Knowledge Base — 81 Articles — 11 Domains — Battery Mode Active';
+  display: block;
+  font-family: monospace;
+  font-size: 11px;
+  color: #aaa;
+  padding: 8px 0;
+  border-bottom: 1px solid #222;
+  margin-bottom: 8px;
+}
+/* Cursor still needed */
+body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
+body.battery-mode @keyframes cur { 50% { opacity: 0; } }
+
+/* Mobile overrides for system */
+@media (max-width: 768px) {
+  .theme-picker-grid { grid-template-columns: 1fr; }
+  .tp-btn { min-height: 54px; }
+  .tp-name { font-size: 14px; }
+  .shg-num { font-size: 20px; }
+}
+.wf2-tier {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--t3);
+  flex-shrink: 0;
+}
+.sys-key-wrap { padding: 12px 16px 14px; }
+.sys-key-hint { font-size: 12px; color: var(--t2); line-height: 1.65; margin-bottom: 10px; }
+.boot-skip{position:absolute;bottom:24px;right:28px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3);background:transparent;border:1px solid var(--br2);padding:6px 14px;cursor:pointer;border-radius:3px;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.boot-skip:hover{color:var(--t0);border-color:var(--acc)}
+.retry-btn{margin-left:10px;padding:5px 13px;border:1px solid var(--warn);color:var(--warn);background:none;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background .12s;min-height:32px;vertical-align:middle}
+.retry-btn:hover{background:rgba(255,165,2,.1)}
+.r-ask-btn{display:block;width:100%;margin:20px 0 4px;padding:14px;background:rgba(255,71,87,.07);border:1px solid rgba(255,71,87,.25);border-radius:8px;color:var(--t0);font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;text-align:center;transition:all .15s}
+.r-ask-btn:hover{background:rgba(255,71,87,.15);border-color:var(--acc);box-shadow:0 0 14px rgba(255,71,87,.1)}
+.disp-list{display:flex;flex-direction:column}
+.disp-row{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--br1);gap:12px}
+.disp-row:last-child{border-bottom:none}
+.disp-info{display:flex;flex-direction:column;gap:3px;flex:1}
+.disp-lbl{font-size:13px;color:var(--t1);font-weight:500}
+.disp-desc{font-size:10px;color:var(--t3);font-family:var(--mono)}
+.dtog{font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:6px 14px;border-radius:4px;cursor:pointer;border:1px solid;min-width:44px;min-height:36px;flex-shrink:0;transition:all .15s;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.dtog.on{color:var(--ok);border-color:rgba(46,213,115,.4);background:rgba(46,213,115,.07)}
+.dtog.off{color:var(--t3);border-color:var(--br2);background:var(--bg2)}
+body.no-crt::after{display:none!important}
+body.no-hud #main{background-image:none!important}
+body.no-anim .ring,.no-anim .ring-scan,.no-anim .ai-core-pulse{animation:none!important}
+body.no-anim .jarvis-module,.no-anim .tp-btn{transition:none!important}
+body.no-beam #app::after{display:none!important}
+body.hi-contrast{--t0:#ffffff!important;--t1:#ffffff!important;--t2:#e0e0e0!important;--t3:#b0b0b0!important}
+/* Battery: pure black information mode */
+body.battery-mode,body.battery-mode #app,body.battery-mode #main{background:#000!important}
+body.battery-mode #topbar{background:#000!important;border-bottom:1px solid #1a1a1a!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+body.battery-mode #sidebar,body.battery-mode #panel{background:#000!important;border-color:#1a1a1a!important}
+body.battery-mode .scard2,body.battery-mode .scard3{background:#050505!important;border-color:#1a1a1a!important}
+body.battery-mode .msg{background:#050505!important;border-color:#1a1a1a!important}
+body.battery-mode .input-box{background:#050505!important;border-color:#1a1a1a!important}
+body.battery-mode .ai-core-container,body.battery-mode .welcome-center,
+body.battery-mode .ring,body.battery-mode .ring-scan,body.battery-mode .ai-core-pulse,
+body.battery-mode .status-bar-wrap,body.battery-mode .jarvis-module-grid,
+body.battery-mode #alert-bar,body.battery-mode #app::after,body.battery-mode body::after,
+body.battery-mode .ai-wave,body.battery-mode 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ══ READABLE FONT IMPROVEMENTS ═══════════════════════════════ */
+
+/* Chat message body — main reading area */
+.mbody {
+  font-size: 15px !important;
+  line-height: 1.8 !important;
+  color: var(--t1) !important;
+}
+.mbody p { margin-bottom: 10px; font-size: 15px; }
+
+/* Markdown steps and lists */
+.md-step { font-size: 14.5px; line-height: 1.75; padding: 4px 0; }
+.md-li   { font-size: 14.5px; line-height: 1.75; padding: 2px 0; }
+.md-h    { font-size: 15px;   font-weight: 600;  margin: 12px 0 6px; }
+
+/* Article reader */
+.r-title  { font-size: 20px  !important; line-height: 1.35; }
+.r-body   { font-size: 15px  !important; line-height: 1.8; }
+.r-body p { font-size: 15px; }
+.r-crumb  { font-size: 12px  !important; }
+
+/* Sidebar article list */
+.bart     { font-size: 13.5px !important; padding: 8px 12px !important; line-height: 1.4; }
+.bcat-lbl { font-size: 11px  !important; }
+
+/* Chat input */
+#qin { font-size: 15px !important; line-height: 1.6; }
+
+/* Navigation labels */
+.nb { font-size: 12px !important; letter-spacing: .05em !important; }
+
+/* System panel readable sizes */
+.s2-k  { font-size: 13px !important; }
+.s2-v  { font-size: 13px !important; }
+.wf2-name { font-size: 15px !important; }
+.wf2-sub  { font-size: 13px !important; }
+.sys-key-hint { font-size: 13.5px !important; }
+.tp-name { font-size: 14px !important; }
+.tp-desc { font-size: 11px !important; }
+.s3-title { font-size: 10px !important; }
+
+/* Emergency cards */
+.ec-title { font-size: 14px  !important; }
+.ec-desc  { font-size: 12.5px !important; line-height: 1.5; }
+
+/* About / Mission page */
+.about-sec-body { font-size: 15px !important; line-height: 1.9 !important; }
+.about-sec-title { font-size: 22px !important; }
+
+/* ══ WELCOME SCREEN — clean centred layout ═════════════════════ */
+.welcome-msg {
+  text-align: center;
+  padding: 24px 16px 20px !important;
+  border-color: var(--br1) !important;
+}
+.welcome-core-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.welcome-ai-mode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .08em;
+  color: var(--t2);
+}
+.wam-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--t3);
+  flex-shrink: 0;
+  animation: blink 2.5s ease-in-out infinite;
+}
+.wlc-section-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-bottom: 10px;
+}
+.welcome-hint {
+  font-size: 12px;
+  color: var(--t3);
+  font-style: italic;
+  margin-top: 16px;
+  font-family: var(--body);
+}
+/* Wider module tiles for welcome */
+.jarvis-module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 10px;
+}
+.jm-label {
+  font-size: 11px !important;
+  letter-spacing: .06em !important;
+}
+
+/* ══ AEGIS LOGO PANEL — replaces rotating radar ═══════════════ */
+.aegis-logo-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 32px 40px;
+  border: 1px solid var(--br2);
+  border-radius: 16px;
+  background: linear-gradient(160deg, var(--bg2) 0%, var(--bg1) 100%);
+  position: relative;
+  overflow: hidden;
+  /* Subtle corner accents */
+}
+/* Corner accent marks — pure CSS, no animation */
+.aegis-logo-panel::before,
+.aegis-logo-panel::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--acc);
+  border-style: solid;
+  opacity: .5;
+}
+.aegis-logo-panel::before {
+  top: 10px; left: 10px;
+  border-width: 2px 0 0 2px;
+}
+.aegis-logo-panel::after {
+  bottom: 10px; right: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+.alp-glyph {
+  font-size: 40px;
+  color: var(--t0);
+  line-height: 1;
+  /* Subtle glow — no animation */
+  text-shadow: 0 0 24px rgba(255,107,107,.4);
+}
+.alp-name {
+  font-family: var(--head);
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: .22em;
+  color: var(--t0);
+  text-shadow: 0 0 30px rgba(255,107,107,.3);
+  line-height: 1;
+}
+.alp-sub {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--t3);
+  margin-top: 2px;
+}
+.alp-creator {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: .14em;
+  color: var(--t4);
+  text-transform: uppercase;
+}
+.alp-divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--br3), transparent);
+  margin: 4px 0;
+}
+
+/* Mobile sizing */
+@media (max-width: 480px) {
+  .aegis-logo-panel { padding: 24px 28px; }
+  .alp-name  { font-size: 26px; }
+  .alp-glyph { font-size: 32px; }
+}
 
 </style>
 
@@ -2457,6 +2850,7 @@ body.battery-mode .ring-scan { animation: none !important; }
   <div class="boot-sub">Adaptive Emergency Guide &amp; Intelligence System</div>
   <div class="boot-lines" id="boot-lines"></div>
   <div class="boot-bar"><div class="boot-prog"></div></div>
+  <button class="boot-skip" onclick="skipBoot()">SKIP &#8250;</button>
 </div>
 
 <div id="app">
@@ -2498,7 +2892,7 @@ body.battery-mode .ring-scan { animation: none !important; }
   <div class="sb-section">Knowledge Domains</div>
   <div id="dom-nav"></div>
   <div style="margin-top:auto;border-top:1px solid var(--br2)">
-    <div class="sb-stat"><span class="sb-sk">Articles</span><span class="sb-sv" id="s-arts">62</span></div>
+    <div class="sb-stat"><span class="sb-sk">Articles</span><span class="sb-sv" id="s-arts">81</span></div>
     <div class="sb-stat"><span class="sb-sk">Domains</span><span class="sb-sv">6</span></div>
     <div class="sb-stat"><span class="sb-sk">Mode</span><span class="sb-sv" id="s-mode">offline</span></div>
 
@@ -2561,25 +2955,24 @@ body.battery-mode .ring-scan { animation: none !important; }
   <div id="v-system" class="view">
   <div class="sys-scroll">
 
-    <!-- Header -->
     <div class="sys-hdr">
-      <div class="sys-hdr-title">System Control</div>
-      <div class="sys-hdr-sub">AEGIS v3 &middot; <span id="uptime-sys" style="color:var(--ok)">00:00:00</span></div>
+      <div class="sys-hdr-title">System</div>
+      <div class="sys-hdr-sub">AEGIS v3 &nbsp;&middot;&nbsp; Uptime: <span id="uptime-sys">00:00:00</span></div>
     </div>
 
-    <!-- Status row -->
+    <!-- AI status + KB info -->
     <div class="sys-2col">
       <div class="scard2">
         <div class="s2-title">AI Backend</div>
-        <div class="s2-row"><span class="s2-k">Status</span><span class="s2-v" id="sv-api">No key</span></div>
+        <div class="s2-row"><span class="s2-k">Claude API</span><span class="s2-v" id="sv-api">No key</span></div>
         <div class="s2-row"><span class="s2-k">Mode</span><span class="s2-v ok" id="sv-mode">offline KB</span></div>
-        <div class="s2-row"><span class="s2-k">Key</span><span class="s2-v" id="sv-key">&#8212;</span></div>
+        <div class="s2-row"><span class="s2-k">Key stored</span><span class="s2-v" id="sv-key">&#8212;</span></div>
       </div>
       <div class="scard2">
         <div class="s2-title">Knowledge Base</div>
         <div class="s2-row"><span class="s2-k">Articles</span><span class="s2-v ok">81</span></div>
         <div class="s2-row"><span class="s2-k">Domains</span><span class="s2-v ok">11</span></div>
-        <div class="s2-row"><span class="s2-k">Offline</span><span class="s2-v ok">100% &#10003;</span></div>
+        <div class="s2-row"><span class="s2-k">Offline</span><span class="s2-v ok">100%</span></div>
       </div>
     </div>
 
@@ -2589,93 +2982,75 @@ body.battery-mode .ring-scan { animation: none !important; }
       <div class="wf2-item">
         <span class="wf2-dot" id="wf-api"></span>
         <span class="wf2-text">
-          <span class="wf2-name">Claude AI</span>
-          <span class="wf2-sub">API key required &middot; <span id="wf-api-s" style="color:var(--t3)">NO KEY</span></span>
+          <span class="wf2-name">Claude AI (claude-sonnet-4)</span>
+          <span class="wf2-sub">Requires API key &middot; <span id="wf-api-s" style="color:var(--t3)">NO KEY</span></span>
         </span>
-        <span style="font-family:var(--mono);font-size:8px;color:var(--t3);flex-shrink:0">TIER 1</span>
+        <span class="wf2-tier">TIER 1</span>
       </div>
       <div class="wf2-arrow">&#8595; fallback</div>
       <div class="wf2-item">
         <span class="wf2-dot on"></span>
         <span class="wf2-text">
-          <span class="wf2-name">Embedded KB</span>
+          <span class="wf2-name">Embedded Knowledge Base</span>
           <span class="wf2-sub">81 articles &middot; Always available offline</span>
         </span>
-        <span style="font-family:var(--mono);font-size:8px;color:var(--ok);flex-shrink:0">READY</span>
+        <span class="wf2-tier" style="color:var(--ok)">READY</span>
       </div>
     </div>
 
-    <!-- API Key input -->
+    <!-- API key -->
     <div class="scard3">
-      <div class="s3-title">Claude API Key</div>
-      <div style="padding:12px 16px">
-        <div style="font-size:12px;color:var(--t2);margin-bottom:10px;line-height:1.65">
-          Optional &mdash; enables real AI answers instead of knowledge base search.
-          Free key at <span class="s3-link" onclick="window.open('https://console.anthropic.com/','_blank')">console.anthropic.com</span>
+      <div class="s3-title">Claude API Key <span style="color:var(--t4);font-size:9px;letter-spacing:0;text-transform:none;font-family:var(--body);font-weight:400">optional</span></div>
+      <div class="sys-key-wrap">
+        <div class="sys-key-hint">
+          Enables real AI answers. Free key at
+          <span class="s3-link" onclick="window.open('https://console.anthropic.com/','_blank')">console.anthropic.com</span>
         </div>
         <div class="key-input-row">
-          <input id="sys-key-input" type="password" placeholder="sk-ant-api03-&hellip;" class="key-input" aria-label="API key" autocomplete="off">
-          <button onclick="saveKeyFromSystem()" class="key-btn save" style="min-height:44px">Save</button>
-          <button onclick="clearKey()" class="key-btn clear" style="min-height:44px">Clear</button>
+          <input id="sys-key-input" type="password" placeholder="sk-ant-api03-&hellip;"
+            class="key-input" aria-label="API key" autocomplete="off">
+          <button onclick="saveKeyFromSystem()" class="key-btn save">Save</button>
+          <button onclick="clearKey()" class="key-btn clear">Clear</button>
         </div>
       </div>
     </div>
 
-    <!-- Display Theme — 2-col picker -->
+    <!-- Display theme -->
     <div class="scard3">
       <div class="s3-title">Display Theme</div>
       <div class="theme-picker-grid">
-        <button onclick="setTheme('red')"      class="tp-btn" id="theme-red">
-          <span class="tp-swatch" style="background:#ff6b6b;box-shadow:0 0 6px #ff6b6b"></span>
-          <span class="tp-text"><span class="tp-name">Red Phosphor</span><span class="tp-desc">Default tactical</span></span>
+        <button onclick="setTheme('red')" class="tp-btn is-active" id="theme-red">
+          <span class="tp-swatch" style="background:#ff6b6b"></span>
+          <span class="tp-text"><span class="tp-name">Red Phosphor</span><span class="tp-desc">Default</span></span>
           <span class="tp-check" id="tp-red">&#10003;</span>
         </button>
-        <button onclick="setTheme('green')"    class="tp-btn" id="theme-green">
-          <span class="tp-swatch" style="background:#39ff14;box-shadow:0 0 6px #39ff14"></span>
-          <span class="tp-text"><span class="tp-name">Green Terminal</span><span class="tp-desc">Military classic</span></span>
-          <span class="tp-check" id="tp-green">&#10003;</span>
+        <button onclick="setTheme('green')" class="tp-btn" id="theme-green">
+          <span class="tp-swatch" style="background:#39ff14"></span>
+          <span class="tp-text"><span class="tp-name">Green Terminal</span><span class="tp-desc">Military</span></span>
+          <span class="tp-check" id="tp-green"></span>
         </button>
-        <button onclick="setTheme('neutral')"  class="tp-btn" id="theme-neutral">
-          <span class="tp-swatch" style="background:#7eaaff;box-shadow:0 0 6px #7eaaff"></span>
-          <span class="tp-text"><span class="tp-name">Neutral Dark</span><span class="tp-desc">Blue-dark balanced</span></span>
-          <span class="tp-check" id="tp-neutral">&#10003;</span>
+        <button onclick="setTheme('neutral')" class="tp-btn" id="theme-neutral">
+          <span class="tp-swatch" style="background:#7eaaff"></span>
+          <span class="tp-text"><span class="tp-name">Neutral Dark</span><span class="tp-desc">Balanced</span></span>
+          <span class="tp-check" id="tp-neutral"></span>
         </button>
         <button onclick="setTheme('daylight')" class="tp-btn" id="theme-daylight">
-          <span class="tp-swatch" style="background:#0a52cc;box-shadow:0 0 6px #0a52cc"></span>
-          <span class="tp-text"><span class="tp-name">Daylight &#9728;</span><span class="tp-desc">Direct sunlight readable</span></span>
-          <span class="tp-check" id="tp-daylight">&#10003;</span>
+          <span class="tp-swatch" style="background:#0a52cc"></span>
+          <span class="tp-text"><span class="tp-name">Daylight &#9728;</span><span class="tp-desc">Sunlight</span></span>
+          <span class="tp-check" id="tp-daylight"></span>
         </button>
-        <button onclick="setTheme('night')"    class="tp-btn" id="theme-night">
-          <span class="tp-swatch" style="background:#ff9d4d;box-shadow:0 0 6px #ff9d4d"></span>
-          <span class="tp-text"><span class="tp-name">Night Mode &#127769;</span><span class="tp-desc">Warm amber, no blue light</span></span>
-          <span class="tp-check" id="tp-night">&#10003;</span>
+        <button onclick="setTheme('night')" class="tp-btn" id="theme-night">
+          <span class="tp-swatch" style="background:#ff9d4d"></span>
+          <span class="tp-text"><span class="tp-name">Night Mode &#127769;</span><span class="tp-desc">No blue light</span></span>
+          <span class="tp-check" id="tp-night"></span>
         </button>
-        <button onclick="setTheme('battery')"  class="tp-btn" id="theme-battery">
-          <span class="tp-swatch" style="background:#888;box-shadow:0 0 4px #888"></span>
-          <span class="tp-text"><span class="tp-name">Battery Saver &#9889;</span><span class="tp-desc">Pure black, no glow</span></span>
-          <span class="tp-check" id="tp-battery">&#10003;</span>
+        <button onclick="setTheme('battery')" class="tp-btn" id="theme-battery">
+          <span class="tp-swatch" style="background:#555"></span>
+          <span class="tp-text"><span class="tp-name">Battery Saver &#9889;</span><span class="tp-desc">Pure black</span></span>
+          <span class="tp-check" id="tp-battery"></span>
         </button>
       </div>
       <div class="theme-active-note" id="theme-note">&#9670; Red Phosphor active</div>
-    </div>
-
-    <!-- System health -->
-    <div class="scard3">
-      <div class="s3-title">System Health</div>
-      <div class="sys-health-grid">
-        <div class="shg-cell"><span class="shg-num ok">81</span><span class="shg-lbl">Articles</span></div>
-        <div class="shg-cell"><span class="shg-num ok">16</span><span class="shg-lbl">Emergency Cards</span></div>
-        <div class="shg-cell"><span class="shg-num ok">12</span><span class="shg-lbl">Safety Patterns</span></div>
-        <div class="shg-cell"><span class="shg-num ok">11</span><span class="shg-lbl">Domains</span></div>
-        <div class="shg-cell"><span class="shg-num ok">100%</span><span class="shg-lbl">Offline</span></div>
-        <div class="shg-cell"><span class="shg-num" id="sh-hist">0</span><span class="shg-lbl">Messages</span></div>
-      </div>
-    </div>
-
-    <!-- Build phases -->
-    <div class="scard3">
-      <div class="s3-title">Build Phases</div>
-      <div id="phase-list" style="padding:4px 0"></div>
     </div>
 
   </div>
@@ -2697,7 +3072,7 @@ body.battery-mode .ring-scan { animation: none !important; }
           </div>
           <div class="dv-name">All Domains</div>
           <div class="dv-desc">No filter — AEGIS draws from the full knowledge base across all 6 domains and 53 articles.</div>
-          <div class="dv-arts">53 articles</div>
+          <div class="dv-arts">81 articles</div>
         </div>
 
         <div class="dv-card" onclick="pickDomain('survival')" id="dvc-survival" style="--dc:#ff4b4b">
@@ -5104,6 +5479,9 @@ const WARNS = [
   {rx:/epinephrine|epipen/i,    lv:'critical',msg:'Epinephrine adult dose: 0.3mg IM into outer thigh. Wrong dose is dangerous.'},
   {rx:/surgery|incision|scalpel/i,lv:'high', msg:'Field surgery carries major infection risk. Only proceed if death is the alternative.'},
 ];
+const FUZZY_WARNS=[{terms:['tourniquet','turniquet','torniquete','tournaquet'],lv:'critical',msg:'Tourniquet time must be recorded on patient. Do not remove once applied.'},{terms:['epinephrine','epenephrine','epinefrine','epipen','adrenaline'],lv:'critical',msg:'Epinephrine adult dose: 0.3mg IM outer thigh. Wrong dose is dangerous.'},{terms:['radiation','radation','raditaion','fallout','nuclear'],lv:'critical',msg:'Shelter in reinforced building. Seal all gaps. Stay inside 24-48h.'},{terms:['hypothermia','hyperthermia','frostbite','frostbight'],lv:'high',msg:'Do NOT rub frostbitten tissue. Rewarm gradually in warm not hot water.'},{terms:['cpr','cardiopulmonary','cardiac'],lv:'high',msg:'CPR effectiveness drops sharply after 4-6 min. Begin immediately.'},{terms:['poisoning','overdose','poisined','ingested'],lv:'high',msg:'Call Poison Control if available. Do not induce vomiting unless told to.'}];
+function levenshtein(a,b){var m=a.length,n=b.length,d=[],i,j;for(i=0;i<=m;i++)d[i]=[i];for(j=0;j<=n;j++)d[0][j]=j;for(i=1;i<=m;i++)for(j=1;j<=n;j++)d[i][j]=a[i-1]===b[j-1]?d[i-1][j-1]:1+Math.min(d[i-1][j],d[i][j-1],d[i-1][j-1]);return d[m][n];}
+function fuzzyCheck(text){if(!text)return[];var words=text.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w.length>3;});var hits=[],seen={};for(var fi=0;fi<FUZZY_WARNS.length;fi++){var fw=FUZZY_WARNS[fi];for(var wi=0;wi<words.length;wi++){for(var ti=0;ti<fw.terms.length;ti++){var t=fw.terms[ti],thr=t.length<=6?1:t.length<=9?2:3;if(levenshtein(words[wi],t)<=thr&&!seen[fw.msg]){hits.push({lv:fw.lv,msg:fw.msg});seen[fw.msg]=1;}}}}return hits;}
 
 // ── KB keyword shortcut map ──────────────────────────────────
 const KW = {
@@ -5213,6 +5591,13 @@ function boot() {
   }, delay + 200);
 }
 
+function skipBoot() {
+  var o = document.getElementById('boot');
+  if (!o) return;
+  o.classList.add('hide');
+  setTimeout(function(){ try{o.remove();}catch(e){} }, 200);
+}
+
 // ════════════════════════════════════════════════════════════
 // INIT
 // ════════════════════════════════════════════════════════════
@@ -5278,6 +5663,13 @@ function dismissBanner() {
 
 function updateKeyUI() {
   const haKey = !!S.apiKey;
+  // Update welcome side panel AI indicator
+  const acpMode = document.getElementById('acp-mode');
+  const acpAi   = document.getElementById('acp-ai');
+  const acpCore  = document.getElementById('ai-core-status');
+  if (acpMode) acpMode.textContent = haKey ? 'CLAUDE AI' : 'OFFLINE';
+  if (acpAi)   acpAi.textContent   = haKey ? 'Claude API' : 'KB Mode';
+  if (acpCore)  acpCore.textContent = 'ONLINE';
   // Top bar dots
   const da = document.getElementById('d-api');
   if (da) { da.className = 'dot ' + (haKey ? 'on' : 'off'); }
@@ -5299,6 +5691,9 @@ function updateKeyUI() {
   const banner = document.getElementById('key-banner');
   if (banner && haKey) banner.classList.add('hidden');
   if (banner && !haKey) banner.classList.remove('hidden');
+  // Welcome screen API dot
+  const apiDot = document.getElementById('jwl-api-dot');
+  if (apiDot) apiDot.style.background = haKey ? 'var(--ok)' : 'var(--br3)';
 }
 
 // ════════════════════════════════════════════════════════════
@@ -5397,28 +5792,39 @@ function buildBrowse(filter='') {
   const tree = document.getElementById('btree');
   tree.innerHTML = '';
   const q = filter.toLowerCase();
+  const chunks = [];
   for (const [catKey, cat] of Object.entries(KB)) {
+    const rows = [];
+    for (const [, topic] of Object.entries(cat.topics)) {
+      for (const art of topic.articles) {
+        if (q && !art.title.toLowerCase().includes(q) && !(art.body||'').toLowerCase().includes(q)) continue;
+        rows.push({art, cat});
+      }
+    }
+    if (rows.length || !q) chunks.push({cat, rows});
+  }
+  let ci = 0;
+  function nextChunk() {
+    if (ci >= chunks.length) return;
+    const {cat, rows} = chunks[ci++];
     const catEl = document.createElement('div');
     const hdr = document.createElement('div');
     hdr.className = 'bcat-hdr';
     hdr.innerHTML = `<span class="bcat-ico" style="color:${cat.color}">${cat.icon}</span><span class="bcat-lbl" style="color:${cat.color}">${cat.label}</span>`;
     catEl.appendChild(hdr);
-    let any = false;
-    for (const [, topic] of Object.entries(cat.topics)) {
-      for (const art of topic.articles) {
-        if (q && !art.title.toLowerCase().includes(q) && !(art.body||'').toLowerCase().includes(q)) continue;
-        any = true;
-        const row = document.createElement('div');
-        row.className = 'bart' + (S.curArt===art.id?' sel':'');
-        if (S.curArt===art.id) { row.style.borderLeftColor=cat.color; }
-        row.dataset.id = art.id;
-        row.innerHTML = `<span class="apip ${art.priority||'medium'}"></span><span style="flex:1">${art.title}</span>`;
-        row.onclick = () => openArt(art.id);
-        catEl.appendChild(row);
-      }
+    for (const {art} of rows) {
+      const row = document.createElement('div');
+      row.className = 'bart' + (S.curArt===art.id?' sel':'');
+      if (S.curArt===art.id) row.style.borderLeftColor = cat.color;
+      row.dataset.id = art.id;
+      row.innerHTML = `<span class="apip ${art.priority||'medium'}"></span><span style="flex:1">${art.title}</span>`;
+      row.onclick = () => openArt(art.id);
+      catEl.appendChild(row);
     }
-    if (any || !q) tree.appendChild(catEl);
+    tree.appendChild(catEl);
+    if (ci < chunks.length) requestAnimationFrame(nextChunk);
   }
+  nextChunk();
 }
 function filterBrowse(q) { buildBrowse(q); }
 
@@ -5542,96 +5948,48 @@ function ts() { return new Date().toLocaleTimeString('en-US',{hour:'2-digit',min
 function renderWelcome() {
   const c = document.getElementById('msgs');
   c.innerHTML = `
-    <div class="msg" style="border-color:var(--br2);padding:16px !important">
+    <div class="msg welcome-msg">
 
-      <!-- JARVIS core + data layout -->
-      <div class="welcome-layout">
-
-        <!-- LEFT data panel -->
-        <div class="welcome-left">
-          <div class="wdata-item ok">
-            <div class="wdata-label">Knowledge Core</div>
-            <div class="wdata-val ok">ONLINE</div>
-          </div>
-          <div class="wdata-item ok">
-            <div class="wdata-label">Articles Loaded</div>
-            <div class="wdata-val ok">81</div>
-            <div class="wdata-sub">11 domains</div>
-          </div>
-          <div class="wdata-item info">
-            <div class="wdata-label">Offline Mode</div>
-            <div class="wdata-val info">100%</div>
-            <div class="wdata-sub">zero deps</div>
+      <!-- AEGIS Logo Panel — replaces rotating radar -->
+      <div class="welcome-core-wrap">
+        <div class="aegis-logo-panel">
+          <div class="alp-glyph">&#9672;</div>
+          <div class="alp-name">AEGIS</div>
+          <div class="alp-sub">Civilization Preservation AI</div>
+          <div class="alp-creator">by Aditya Shaswat</div>
+          <div class="alp-divider"></div>
+          <div class="welcome-ai-mode">
+            <span class="wam-dot" id="w-ai-dot"></span>
+            <span id="w-ai-status">Offline · Embedded Knowledge Base</span>
           </div>
         </div>
-
-        <!-- CENTER — rotating AI core -->
-        <div class="welcome-center">
-          <div class="ai-core-container">
-            <div class="ring ring3"></div>
-            <div class="ring ring2"></div>
-            <div class="ring ring1"></div>
-            <div class="ring-scan"></div>
-            <div class="ai-core">
-              AEGIS
-              <span class="ai-core-sub">ONLINE</span>
-              <div class="ai-core-pulse"></div>
-            </div>
-          </div>
-          <div class="welcome-center-label">Civilization Intelligence</div>
-        </div>
-
-        <!-- RIGHT data panel -->
-        <div class="welcome-right">
-          <div class="wdata-item ok">
-            <div class="wdata-label">Safety Engine</div>
-            <div class="wdata-val ok">ACTIVE</div>
-            <div class="wdata-sub">12 patterns</div>
-          </div>
-          <div class="wdata-item">
-            <div class="wdata-label">Emergency Cards</div>
-            <div class="wdata-val">16</div>
-            <div class="wdata-sub">instant access</div>
-          </div>
-          <div class="wdata-item">
-            <div class="wdata-label">AI Engine</div>
-            <div class="wdata-val" id="w-ai-status">KB Mode</div>
-            <div class="wdata-sub" id="w-ai-sub">add key for Claude</div>
-          </div>
-        </div>
-
       </div>
 
-      <!-- Module quick-launch grid -->
-      <div class="jarvis-module-grid" style="margin:12px 0 10px">
+      <!-- Quick-launch navigation tiles -->
+      <div class="wlc-section-label">Quick Access</div>
+      <div class="jarvis-module-grid">
         <div class="jarvis-module" onclick="nav('browse')">&#128293;<span class="jm-label">Survival</span></div>
         <div class="jarvis-module" onclick="nav('browse')">&#129658;<span class="jm-label">Medical</span></div>
         <div class="jarvis-module" onclick="nav('browse')">&#128167;<span class="jm-label">Water</span></div>
         <div class="jarvis-module" onclick="nav('browse')">&#127807;<span class="jm-label">Food</span></div>
-        <div class="jarvis-module" onclick="nav('browse')">&#9881;&#65039;<span class="jm-label">Engineering</span></div>
-        <div class="jarvis-module" onclick="nav('emergency')">&#9888;&#65039;<span class="jm-label">Emergency</span></div>
+        <div class="jarvis-module" onclick="nav('browse')">&#9881;<span class="jm-label">Engineering</span></div>
+        <div class="jarvis-module" onclick="nav('emergency')">&#9888;<span class="jm-label">Emergency</span></div>
       </div>
 
-      <!-- Status bars -->
-      <div class="status-bar-wrap">
-        <div class="sb-row"><span class="sb-label">Knowledge DB</span><div class="sb-bar"><div class="sb-fill" style="width:100%;background:var(--ok)"></div></div><span class="sb-val" style="color:var(--ok)">READY</span></div>
-        <div class="sb-row"><span class="sb-label">Medical Module</span><div class="sb-bar"><div class="sb-fill" style="width:100%"></div></div><span class="sb-val">LOADED</span></div>
-        <div class="sb-row"><span class="sb-label">Offline Engine</span><div class="sb-bar"><div class="sb-fill" style="width:100%;background:var(--ok)"></div></div><span class="sb-val" style="color:var(--ok)">STABLE</span></div>
-      </div>
-
-      <div class="mfooter" style="margin-top:8px">
-        <span class="badge hi">System Online</span>
-        <span class="badge src">81 Articles</span>
-        <span class="badge src">11 Domains</span>
-        <span class="badge src">Phase 1–10 Complete</span>
-      </div>
+      <!-- Prompt hint -->
+      <div class="welcome-hint">Type a question below or pick a topic above</div>
     </div>`;
 
-  // update AI status in welcome
-  const wai = document.getElementById('w-ai-status');
-  const wsub = document.getElementById('w-ai-sub');
-  if (wai) wai.textContent = S.apiKey ? 'Claude API' : 'KB Mode';
-  if (wsub) wsub.textContent = S.apiKey ? 'AI active' : 'add key for Claude';
+  // Update AI mode indicator
+  const dot = document.getElementById('w-ai-dot');
+  const status = document.getElementById('w-ai-status');
+  if (S.apiKey) {
+    if (dot) dot.style.background = 'var(--ok)';
+    if (status) status.textContent = 'Claude AI · Live answers';
+  } else {
+    if (dot) dot.style.background = 'var(--t3)';
+    if (status) status.textContent = 'Offline · Embedded Knowledge Base';
+  }
 }
 
 function addSystemMsg(txt) {
@@ -5709,6 +6067,7 @@ async function send(override) {
       }
     } catch(e) {
       setThink(rid, false);
+      addRetryMsg(q, rid);
     }
   }
 
@@ -5732,6 +6091,8 @@ async function send(override) {
   S.busy = false;
   document.getElementById('sendbtn').disabled = false;
   document.getElementById('qin').focus();
+  // Update welcome screen counters
+  try { const q=document.getElementById('acp-queries'); if(q) q.textContent=Math.floor(S.history.length/2); } catch(e){}
 }
 
 async function simStream(id, text) {
@@ -5773,19 +6134,19 @@ const THEMES = {
   red: {
     '--bg0':'#0a0a0f','--bg1':'#0f0f18','--bg2':'#141420','--bg3':'#1a1a28',
     '--br1':'#1e1e30','--br2':'#2a2a45','--br3':'#363658','--br4':'#484870',
-    '--t0':'#ff6b6b','--t1':'#e8e8f0','--t2':'#a0a0c0','--t3':'#606080','--t4':'#303050',
+    '--t0':'#ff6b6b','--t1':'#e8e8f0','--t2':'#a0a0c0','--t3':'#9090a8','--t4':'#303050',
     '--acc':'#ff4757','--glow':'#ff6b6b', label:'Red Phosphor'
   },
   green: {
     '--bg0':'#030a03','--bg1':'#061006','--bg2':'#0a180a','--bg3':'#0f200f',
     '--br1':'#142814','--br2':'#1a361a','--br3':'#204520','--br4':'#285528',
-    '--t0':'#39ff14','--t1':'#d0f0c0','--t2':'#80b880','--t3':'#4a7050','--t4':'#223022',
+    '--t0':'#39ff14','--t1':'#d0f0c0','--t2':'#80b880','--t3':'#6a9070','--t4':'#223022',
     '--acc':'#00ff41','--glow':'#39ff14', label:'Green Terminal'
   },
   neutral: {
     '--bg0':'#0c0e14','--bg1':'#111520','--bg2':'#161b2c','--bg3':'#1c2238',
     '--br1':'#212740','--br2':'#2a3355','--br3':'#343f6a','--br4':'#404c80',
-    '--t0':'#7eaaff','--t1':'#dde4ff','--t2':'#8898cc','--t3':'#4a5580','--t4':'#252d4a',
+    '--t0':'#7eaaff','--t1':'#dde4ff','--t2':'#8898cc','--t3':'#6a75a0','--t4':'#252d4a',
     '--acc':'#4d80ff','--glow':'#7eaaff', label:'Neutral Dark'
   },
 
@@ -5801,7 +6162,7 @@ const THEMES = {
   night: {
     '--bg0':'#0c0600','--bg1':'#140900','--bg2':'#1c0e00','--bg3':'#241400',
     '--br1':'#301a00','--br2':'#3d2200','--br3':'#4a2a00','--br4':'#5c3500',
-    '--t0':'#ff9d4d','--t1':'#ffe4c0','--t2':'#c8965a','--t3':'#7a5530','--t4':'#3a2010',
+    '--t0':'#ff9d4d','--t1':'#ffe4c0','--t2':'#c8965a','--t3':'#9a7550','--t4':'#3a2010',
     '--acc':'#ff7a00','--glow':'#ff9d4d', label:'Night Mode'
   },
 
@@ -5809,7 +6170,7 @@ const THEMES = {
   battery: {
     '--bg0':'#000000','--bg1':'#0a0a0a','--bg2':'#111111','--bg3':'#181818',
     '--br1':'#1e1e1e','--br2':'#282828','--br3':'#333333','--br4':'#404040',
-    '--t0':'#e0e0e0','--t1':'#e8e8e8','--t2':'#aaaaaa','--t3':'#666666','--t4':'#333333',
+    '--t0':'#e0e0e0','--t1':'#e8e8e8','--t2':'#aaaaaa','--t3':'#888888','--t4':'#333333',
     '--acc':'#cccccc','--glow':'#aaaaaa', label:'Battery Saver'
   }
 };
@@ -5838,7 +6199,7 @@ function setTheme(name) {
     if (btn) btn.classList.toggle('is-active', n === name);
     // tp-check visibility is controlled by CSS .tp-btn.is-active .tp-check
     // but we still set text for screen readers
-    if (chk) chk.textContent = n === name ? '✓' : '✓';
+    if (chk) chk.textContent = n === name ? '✓' : '';
   });
 
   // Update note
@@ -5878,6 +6239,8 @@ setInterval(() => {
   if (el) el.textContent = t;
   const el2 = document.getElementById('uptime-sys');
   if (el2) el2.textContent = t;
+  const el3 = document.getElementById('acp-uptime');
+  if (el3) el3.textContent = t.slice(3); // mm:ss only
 }, 1000);
 
 // AI wave indicator (show while busy)
@@ -5967,5 +6330,10 @@ function animateCount(el, target) {
 
 // nav() visitor hook merged into original nav() above
 
+function addRetryMsg(query,failedRid){var el=document.getElementById(failedRid);if(el){var body=el.querySelector('.mbody');if(body){var btn=document.createElement('button');btn.className='retry-btn';btn.textContent='↻ Retry';btn.dataset.q=query;btn.onclick=function(){retryQuery(this.dataset.q);};body.innerHTML='<span style="color:var(--warn);font-size:12px">⚠ Network error — API unreachable</span> ';body.appendChild(btn);}}S.busy=false;var sb=document.getElementById('sendbtn');if(sb)sb.disabled=false;}
+function retryQuery(q){addSystemMsg('↻ Retrying in 1s…');setTimeout(function(){send(q);},1000);}
+function askAboutArt(title){nav('chat');setTimeout(function(){var inp=document.getElementById('qin');if(!inp)return;inp.value='Explain in detail: '+title;inp.focus();inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,120)+'px';setTimeout(function(){if(inp.value)send();},400);},60);}
+function dispToggle(key){var map={crt:'no-crt',hud:'no-hud',anim:'no-anim',beam:'no-beam',hc:'hi-contrast'};var defOn={crt:1,hud:1,anim:1,beam:1,hc:0};document.body.classList.toggle(map[key]);var isOn=defOn[key]?!document.body.classList.contains(map[key]):document.body.classList.contains(map[key]);var btn=document.getElementById('tog-'+key);if(btn){btn.textContent=isOn?'ON':'OFF';btn.className='dtog '+(isOn?'on':'off');}try{localStorage.setItem('aegis_disp_'+key,isOn?'1':'0');}catch(e){}}
+document.addEventListener('DOMContentLoaded',function(){var defOn={crt:1,hud:1,anim:1,beam:1,hc:0};Object.keys(defOn).forEach(function(key){try{var v=localStorage.getItem('aegis_disp_'+key);if(v===null)return;if((v==='1')!==!!defOn[key])dispToggle(key);}catch(e){}});});
 </script>
 </html>
