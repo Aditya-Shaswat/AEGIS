@@ -34,7 +34,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap">
-<style>
+<style>@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
 /* ═══════════════════════════════════════════════
    AEGIS v3 — Red Phosphor Theme
    Clean rebuild for browser + Colab compatibility
@@ -818,8 +819,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
   .about-domains-grid { grid-template-columns: 1fr; }
 }
 
-
-
 /* ══════════════════════════════════════════════
    UI REDESIGN — softer, less blocky
    ══════════════════════════════════════════════ */
@@ -1123,10 +1122,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
 @media(max-width:420px) {
   .dv-grid { grid-template-columns: 1fr; }
 }
-
-
-
-
 
 /* ══════════════════════════════════════════════
    PART C — THEME SWITCHER + ROADMAP + FIXES
@@ -1562,25 +1557,7 @@ body.night-mode .hero-bg-radial {
 /* ══════════════════════════════════════════════
    BATTERY SAVER — pure black, kill all glow
    ══════════════════════════════════════════════ */
-body.battery-mode * {
-  animation: none !important;
-  transition: none !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-}
-body.battery-mode body::after { display: none !important; }
-body.battery-mode .logo-glyph { animation: none !important; }
-body.battery-mode .em-banner { animation: none !important; }
-body.battery-mode .dots span { animation: none !important; opacity: 1 !important; transform: scale(1) !important; }
-body.battery-mode .boot-prog { animation: none !important; width: 100% !important; }
-body.battery-mode #topbar { backdrop-filter: none !important; background: #000 !important; }
-body.battery-mode .msg { background: #0a0a0a !important; border-color: #1e1e1e !important; }
-body.battery-mode .input-box { background: #0a0a0a !important; }
-body.battery-mode .scard2, body.battery-mode .scard3 { background: #0a0a0a !important; }
 /* Still show cursor */
-body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
-
 /* ══════════════════════════════════════════════
    THEME BUTTON DESCRIPTION TEXT
    ══════════════════════════════════════════════ */
@@ -1818,8 +1795,7 @@ body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
 }
 .alert-close:hover { opacity: 1; }
 
-/* Scrollbar for battery/daylight modes */
-body.battery-mode ::-webkit-scrollbar-thumb { background: #333; }
+
 body.daylight-mode ::-webkit-scrollbar-thumb { background: #9aa5b8; }
 
 /* Mobile: hide tb2-desc on small screens */
@@ -1922,20 +1898,7 @@ body.daylight-mode ::-webkit-scrollbar-thumb { background: #9aa5b8; }
   .vc-num { font-size: 26px; }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .hg3-item:hover { background: var(--bg2); }
-
-
 
 /* ══ JARVIS ELEMENTS ════════════════════════════════════════ */
 /* Scanning beam */
@@ -1954,7 +1917,6 @@ body.daylight-mode ::-webkit-scrollbar-thumb { background: #9aa5b8; }
   0%   { top: 0%; }
   100% { top: 100%; }
 }
-body.battery-mode #app::after { display: none; }
 /* HUD grid on main */
 #main {
   background-image:
@@ -1962,8 +1924,6 @@ body.battery-mode #app::after { display: none; }
     linear-gradient(90deg, rgba(255,107,107,.012) 1px, transparent 1px) !important;
   background-size: 44px 44px !important;
 }
-body.battery-mode #main,
-body.daylight-mode #main { background-image: none !important; }
 /* Holographic panel on messages */
 .msg {
   background: linear-gradient(135deg,
@@ -2055,9 +2015,6 @@ body.daylight-mode #main { background-image: none !important; }
    JARVIS AI CORE — 3-ring rotating system
    ══════════════════════════════════════════════════════════════ */
 
-
-
-
 /* ── Ring base — FIXED: inset+margin centers without affecting transform ── */
 .ring {
   position: absolute;
@@ -2076,58 +2033,14 @@ body.daylight-mode #main { background-image: none !important; }
 
 /* Ring 3 — outermost, slow clockwise */
 
-
-
-
-
-
-
-
-
   100% { transform: scale(1.4); opacity: 0;  }
 }
 
-
-
-
 /* Welcome screen layout — ring center with data panels */
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* ══ THEME PICKER — clean single source of truth ══ */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ══ SYSTEM HEALTH — improved ══ */
-
-
-
-
-
-
-
 
 /* ══ MOBILE FULL OVERHAUL ══ */
 @media(max-width:768px) {
@@ -2175,17 +2088,6 @@ body.daylight-mode #main { background-image: none !important; }
   .nb .n-label { display: none; }
 }
 
-/* Battery mode — no animations */
-body.battery-mode .ring,
-body.battery-mode .ai-core-pulse,
-body.battery-mode 
-
-
-/* ── THEME PICKER — active state fix ── */
-
-
-
-/* ensure first button (red) starts active */
 #theme-red.is-active { border-left: 2px solid #ff6b6b !important; }
 #theme-green.is-active { border-left: 2px solid #39ff14 !important; }
 #theme-neutral.is-active { border-left: 2px solid #7eaaff !important; }
@@ -2368,11 +2270,6 @@ body.battery-mode
 
 /* Central glowing core */
 
-
-
-
-
-
 /* Rings — positioned via inset 0 + margin auto */
 .ring {
   position: absolute;
@@ -2392,30 +2289,8 @@ body.battery-mode
 
 /* ── THEME PICKER ── */
 
-
-
-
-
-
-
-
-
-
-
 /* ── SYSTEM HEALTH GRID ── */
 
-
-
-
-
-
-
-/* Battery mode: disable all ring animations */
-body.battery-mode .ring,
-body.battery-mode 
-body.battery-mode
-
-/* ══ MOBILE — phone-first improvements ═════════════════════════ */
 @media (max-width: 768px) {
 
   /* AI command center — stack vertically on phone */
@@ -2551,56 +2426,13 @@ body.battery-mode
 }
 
 /* ══ BATTERY SAVER — pure information, no decoration ══════════ */
-body.battery-mode * {
-  animation: none !important;
-  transition: none !important;
-  text-shadow: none !important;
-  box-shadow: none !important;
-  filter: none !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  background-image: none !important;
-}
 /* Restore essential backgrounds */
-body.battery-mode { background: #000 !important; color: #e0e0e0 !important; }
-body.battery-mode #topbar { background: #000 !important; border-bottom: 1px solid #222 !important; }
-body.battery-mode #sidebar, body.battery-mode #panel { background: #000 !important; border-color: #222 !important; }
-body.battery-mode #main { background: #000 !important; }
-body.battery-mode .msg { background: #0a0a0a !important; border-color: #1e1e1e !important; }
-body.battery-mode .input-box { background: #0a0a0a !important; border-color: #222 !important; }
-body.battery-mode .scard2, body.battery-mode .scard3 { background: #0a0a0a !important; border-color: #1e1e1e !important; }
-body.battery-mode .shg-cell { background: #0a0a0a !important; }
-/* Remove ALL decorative elements in battery mode */
-body.battery-mode .ai-command-center,
-body.battery-mode .welcome-layout,
-body.battery-mode .ai-core-container,
-body.battery-mode .ring,
-body.battery-mode .ring-scan,
-body.battery-mode .status-bar-wrap,
-body.battery-mode .jarvis-module-grid,
-body.battery-mode #alert-bar,
-body.battery-mode #app::after,
-body.battery-mode body::after,
-body.battery-mode .ai-wave { display: none !important; }
-/* Keep the text content of welcome but hide the decoration */
-body.battery-mode .welcome-left,
-body.battery-mode .welcome-right,
-body.battery-mode 
-/* Simple text header in battery mode instead */
-body.battery-mode #msgs > .msg:first-child .mbody::before {
-  content: 'AEGIS — Offline Knowledge Base — 81 Articles — 11 Domains — Battery Mode Active';
-  display: block;
-  font-family: monospace;
-  font-size: 11px;
-  color: #aaa;
-  padding: 8px 0;
-  border-bottom: 1px solid #222;
-  margin-bottom: 8px;
-}
-/* Cursor still needed */
-body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
-body.battery-mode @keyframes cur { 50% { opacity: 0; } }
 
+/* Keep the text content of welcome but hide the decoration */
+
+/* Cursor still needed */
+}
+/* Boot screen: force visibility since animations are disabled */
 /* Mobile overrides for system */
 @media (max-width: 768px) {
   .theme-picker-grid { grid-template-columns: 1fr; }
@@ -2639,23 +2471,7 @@ body.no-anim .ring,.no-anim .ring-scan,.no-anim .ai-core-pulse{animation:none!im
 body.no-anim .jarvis-module,.no-anim .tp-btn{transition:none!important}
 body.no-beam #app::after{display:none!important}
 body.hi-contrast{--t0:#ffffff!important;--t1:#ffffff!important;--t2:#e0e0e0!important;--t3:#b0b0b0!important}
-/* Battery: pure black information mode */
-body.battery-mode,body.battery-mode #app,body.battery-mode #main{background:#000!important}
-body.battery-mode #topbar{background:#000!important;border-bottom:1px solid #1a1a1a!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-body.battery-mode #sidebar,body.battery-mode #panel{background:#000!important;border-color:#1a1a1a!important}
-body.battery-mode .scard2,body.battery-mode .scard3{background:#050505!important;border-color:#1a1a1a!important}
-body.battery-mode .msg{background:#050505!important;border-color:#1a1a1a!important}
-body.battery-mode .input-box{background:#050505!important;border-color:#1a1a1a!important}
-body.battery-mode .ai-core-container,body.battery-mode .welcome-center,
-body.battery-mode .ring,body.battery-mode .ring-scan,body.battery-mode .ai-core-pulse,
-body.battery-mode .status-bar-wrap,body.battery-mode .jarvis-module-grid,
-body.battery-mode #alert-bar,body.battery-mode #app::after,body.battery-mode body::after,
-body.battery-mode .ai-wave,body.battery-mode 
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* ══ READABLE FONT IMPROVEMENTS ═══════════════════════════════ */
-
-/* Chat message body — main reading area */
 .mbody {
   font-size: 15px !important;
   line-height: 1.8 !important;
@@ -3162,6 +2978,109 @@ body.is-desktop #app {
   /* inherits default grid */
 }
 
+
+/* ══════════════════════════════════════════════════════════════
+   BATTERY SAVER MODE — single authoritative block
+   Pure information: no animations, no glow, no decoration
+   ══════════════════════════════════════════════════════════════ */
+
+/* Kill all GPU effects globally */
+body.battery-mode * {
+  animation: none !important;
+  transition: none !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background-image: none !important;
+}
+
+/* Restore cursor animation */
+body.battery-mode .cursor { animation: cur .85s step-end infinite !important; }
+
+/* Pure black backgrounds */
+body.battery-mode,
+body.battery-mode #app,
+body.battery-mode #main   { background: #000 !important; color: #e0e0e0 !important; }
+body.battery-mode #topbar { background: #000 !important; border-bottom: 1px solid #222 !important; }
+body.battery-mode #sidebar,
+body.battery-mode #panel  { background: #000 !important; border-color: #222 !important; }
+body.battery-mode .msg    { background: #060606 !important; border-color: #1e1e1e !important; }
+body.battery-mode .scard2,
+body.battery-mode .scard3 { background: #060606 !important; border-color: #1e1e1e !important; }
+body.battery-mode .input-box { background: #060606 !important; border-color: #222 !important; }
+body.battery-mode .kb-body,
+body.battery-mode .kb-section-hdr,
+body.battery-mode .kb-art-row { background: #000 !important; border-color: #1e1e1e !important; }
+
+/* Hide purely decorative elements */
+body.battery-mode .ring,
+body.battery-mode .ring-scan,
+body.battery-mode .ai-core-pulse,
+body.battery-mode #app::after,
+body.battery-mode body::after,
+body.battery-mode .ai-wave,
+body.battery-mode #alert-bar { display: none !important; }
+
+/* ── BOOT SCREEN in battery mode ─────────────────────────────
+   Force all text visible since animations are disabled        */
+body.battery-mode #boot { background: #000 !important; }
+body.battery-mode .boot-line {
+  opacity: 1 !important;
+  animation: none !important;
+  color: #ccc !important;
+}
+body.battery-mode .boot-name {
+  text-shadow: none !important;
+  color: #e0e0e0 !important;
+}
+body.battery-mode .boot-sub,
+body.battery-mode .boot-creator {
+  color: #888 !important;
+}
+body.battery-mode .boot-g {
+  text-shadow: none !important;
+  color: #ccc !important;
+}
+body.battery-mode .boot-prog {
+  width: 100% !important;
+  animation: none !important;
+  background: #333 !important;
+}
+body.battery-mode .boot-skip {
+  color: #888 !important;
+  border-color: #333 !important;
+}
+
+/* ── WELCOME SCREEN — show AEGIS logo + Quick Access ─────────
+   Keep functional navigation visible; hide only decorations   */
+body.battery-mode .welcome-core-wrap  { display: flex !important; }
+body.battery-mode .aegis-logo-panel {
+  display: flex !important;
+  background: #0a0a0a !important;
+  border-color: #2a2a2a !important;
+}
+body.battery-mode .alp-glyph,
+body.battery-mode .alp-name   { color: #e0e0e0 !important; }
+body.battery-mode .alp-sub,
+body.battery-mode .alp-creator { color: #666 !important; }
+body.battery-mode .alp-divider { background: #2a2a2a !important; }
+body.battery-mode .wlc-section-label { color: #555 !important; }
+body.battery-mode .welcome-hint { color: #444 !important; }
+
+/* ── QUICK ACCESS GRID — fully visible, plain style ──────────*/
+body.battery-mode .jarvis-module-grid {
+  display: grid !important;
+  gap: 4px !important;
+}
+body.battery-mode .jarvis-module {
+  display: flex !important;
+  background: #0f0f0f !important;
+  border: 1px solid #282828 !important;
+  border-radius: 6px !important;
+}
+body.battery-mode .jm-label { color: #aaa !important; }
 </style>
 
 <body>
