@@ -1,5 +1,5 @@
 # AEGIS
-AEGIS Autonomous Emergency Guidance & Intelligence System
+AEGIS (Autonomous Emergency Guidance & Intelligence System)
 
 AEGIS is an offline-first artificial intelligence system designed to preserve and provide critical knowledge required for human survival during extreme global emergencies such as wars, natural disasters, or societal collapse.
 
