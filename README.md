@@ -100,5 +100,4 @@ If you want, I can also help you create a much stronger AEGIS GitHub repo with:
 📂 Perfect folder structure for the repo
 📚 500+ survival dataset list
 🧠 The exact AI models to run offline
-
 🛠 A working prototype architecture
